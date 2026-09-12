@@ -452,7 +452,7 @@ export function generateBookletHtml(): string {
       भारतीय संविधान एवं राजव्यवस्था • सम्पूर्ण प्रामाणिक पाठ्यक्रम
     </div>
     <p style="font-size: 8.5pt; color: #cbd5e1; max-width: 740px; margin: 10px auto 0 auto; line-height: 1.45;">
-      विशेष रूप से उत्तर प्रदेश उप-निरीक्षक (UPSI), यूपी पुलिस कांस्टेबल, SSC CGL/CPO, RO/ARO एवं राज्य लोक सेवा आयोग परीक्षाओं हेतु संकलित। इस प्रमाणित दस्तावेज में 27 अध्यायों की आधिकारिक विषय सूची (अध्याय 1 से 27 सम्पूर्ण • पृष्ठ 2 से 228), सभी 395 अनुच्छेद (भाग 1 से 22), 1773 से 1947 तक 18 ऐतिहासिक अधिनियम, सभी 12 अनुसूचियां, केंद्र व राज्य के 30 तुलनात्मक मैजिक 89/90 जोड़े, सुप्रीम कोर्ट के 45 लैंडमार्क वाद, परीक्षा शब्दावली तथा 182 आधिकारिक विगत वर्ष प्रश्न (PYQ) विस्तृत द्विभाषी व्याख्या सहित पूर्ण रूप से शामिल हैं।
+      विशेष रूप से उत्तर प्रदेश उप-निरीक्षक (UPSI), यूपी पुलिस कांस्टेबल, SSC CGL/CPO, RO/ARO एवं राज्य लोक सेवा आयोग परीक्षाओं हेतु संकलित। इस प्रमाणित दस्तावेज में 27 अध्यायों की आधिकारिक विषय सूची (अध्याय 1 से 27 सम्पूर्ण), सभी 395 अनुच्छेद (भाग 1 से 22), 1773 से 1947 तक 18 ऐतिहासिक अधिनियम, सभी 12 अनुसूचियां, केंद्र व राज्य के 30 तुलनात्मक मैजिक 89/90 जोड़े, सुप्रीम कोर्ट के 45 लैंडमार्क वाद, परीक्षा शब्दावली तथा 182 आधिकारिक विगत वर्ष प्रश्न (PYQ) विस्तृत द्विभाषी व्याख्या सहित पूर्ण रूप से शामिल हैं।
     </p>
     <div style="display: flex; justify-content: center; gap: 12px; margin-top: 12px; font-size: 8.5pt; font-weight: bold; color: #fbbf24; flex-wrap: wrap;">
       <span>📖 395+ अनुच्छेद (भाग 1-22)</span> •
@@ -468,16 +468,15 @@ export function generateBookletHtml(): string {
   <!-- SECTION 1: MASTER TABLE OF CONTENTS (27 CHAPTERS • COMPLETE INDEX) -->
   <section class="avoid-break" style="margin-bottom: 24px;">
     <div class="section-banner">
-      <span>1. अध्याय अनुक्रमणिका एवं पृष्ठ विवरण (Master Table of Contents)</span>
-      <span style="font-size: 8.5pt;">27 Chapters Complete • पृष्ठ 2 से 228</span>
+      <span>1. अध्याय अनुक्रमणिका (Master Table of Contents)</span>
+      <span style="font-size: 8.5pt;">27 Chapters Complete</span>
     </div>
     <table>
       <thead>
         <tr>
           <th style="width: 7%; text-align: center;">क्र.सं.</th>
-          <th style="width: 32%;">अध्याय का नाम (Chapter Title)</th>
-          <th style="width: 47%;">विस्तृत विषय-वस्तु (Coverage & Key Topics)</th>
-          <th style="width: 14%; text-align: center;">पृष्ठ संख्या</th>
+          <th style="width: 35%;">अध्याय का नाम (Chapter Title)</th>
+          <th style="width: 58%;">विस्तृत विषय-वस्तु (Coverage & Key Topics)</th>
         </tr>
       </thead>
       <tbody>`;
@@ -489,7 +488,6 @@ export function generateBookletHtml(): string {
           <td style="text-align: center; font-weight: bold; color: #fbbf24;">${chNum}</td>
           <td><strong style="color: #ffffff;">${escapeHtml(ch.title.hi)}</strong><br/><span style="font-size: 7.5pt; color: #94a3b8;">${escapeHtml(ch.title.en)}</span></td>
           <td>${escapeHtml(ch.description.hi)}</td>
-          <td style="text-align: center; font-weight: bold; font-family: monospace; color: #fde68a;">${escapeHtml(ch.pageRange)}</td>
         </tr>`;
   });
 

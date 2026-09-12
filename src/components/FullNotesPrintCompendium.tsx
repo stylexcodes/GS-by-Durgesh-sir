@@ -91,10 +91,10 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
       <section className="print-section mb-10 print-page-break-before">
         <div className="print-section-header border-b-2 border-amber-500 pb-2 mb-4 flex justify-between items-baseline">
           <h2 className="text-xl font-bold uppercase tracking-wide text-amber-400">
-            अध्याय अनुक्रमणिका एवं पृष्ठ विवरण (Table of Contents)
+            अध्याय अनुक्रमणिका (Table of Contents)
           </h2>
           <span className="text-xs font-bold text-amber-300">
-            27 Chapters Complete • पृष्ठ 2 से 228
+            27 Chapters Complete
           </span>
         </div>
 
@@ -103,9 +103,8 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
             <thead>
               <tr className="bg-[#0f2744] text-amber-400 border-b border-[#1e3a5f]">
                 <th className="p-2 text-center border-r border-[#1e3a5f] w-12 font-bold">क्र.सं.</th>
-                <th className="p-2 border-r border-[#1e3a5f] w-1/4 font-bold">अध्याय का नाम (Chapter Title)</th>
+                <th className="p-2 border-r border-[#1e3a5f] w-1/3 font-bold">अध्याय का नाम (Chapter Title)</th>
                 <th className="p-2 border-r border-[#1e3a5f] font-bold">विस्तृत विषय-वस्तु (Coverage & Key Topics)</th>
-                <th className="p-2 text-center w-24 font-bold">पृष्ठ संख्या</th>
               </tr>
             </thead>
             <tbody>
@@ -124,11 +123,8 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
                       <div className="font-bold text-white text-[13px]">{ch.title.hi}</div>
                       <div className="text-[11px] text-slate-300 font-medium">{ch.title.en}</div>
                     </td>
-                    <td className="p-2 border-r border-[#1e3a5f] text-slate-200 text-[11.5px] leading-relaxed align-top">
+                    <td className="p-2 border-r border-[#1e3a5f] text-slate-200 text-[11.5px] leading-relaxed align-top border-r-0">
                       {ch.description.hi}
-                    </td>
-                    <td className="p-2 text-center font-mono font-bold text-amber-300 border-r-0 align-top whitespace-nowrap text-[12px]">
-                      {ch.pageRange}
                     </td>
                   </tr>
                 );

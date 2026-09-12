@@ -21,8 +21,8 @@ export const ChaptersIndexView: React.FC<ChaptersIndexViewProps> = ({ chapters, 
         </h2>
         <p className="text-xs text-slate-300 mt-1 leading-relaxed">
           {language === 'hi'
-            ? 'पीडीएफ के सभी 23 अध्यायों का प्रामाणिक पृष्ठ-वार संकलन। किसी भी अध्याय का विवरण देखें या सीधे अध्ययन खंड में जाएं।'
-            : 'Authentic page-by-page index of all 23 comprehensive chapters from the complete PDF compendium.'}
+            ? 'पीडीएफ के सभी 27 अध्यायों का प्रामाणिक संकलन। किसी भी अध्याय का विवरण देखें या सीधे अध्ययन खंड में जाएं।'
+            : 'Authentic index of all 27 comprehensive chapters from the complete PDF compendium.'}
         </p>
       </div>
 
@@ -44,15 +44,6 @@ export const ChaptersIndexView: React.FC<ChaptersIndexViewProps> = ({ chapters, 
                     </span>
                     <span className="text-xs font-semibold text-amber-300 uppercase tracking-wider">
                       {language === 'hi' ? `अध्याय ${chNum}` : `Chapter ${chNum}`}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#0a192f] border border-slate-800 text-[11px] text-slate-300 font-mono">
-                    <FileText className="w-3 h-3 text-amber-400" />
-                    <span>
-                      {language === 'hi'
-                        ? `पृष्ठ ${ch.pageRange}`
-                        : `Pp. ${ch.pageRange}`}
                     </span>
                   </div>
                 </div>
