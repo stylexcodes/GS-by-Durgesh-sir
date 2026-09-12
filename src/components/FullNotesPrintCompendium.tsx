@@ -35,7 +35,7 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
   }, []);
 
   return (
-    <div id="full-notes-print-compendium" className="print-only-compendium master-container bg-[#0a192f] text-white font-sans leading-relaxed">
+    <div id="full-notes-print-compendium" className="print-only-compendium master-container bg-[#f8fafc] text-slate-900 font-sans leading-relaxed">
       {/* WATERMARK ON EVERY PAGE - GS By Durgesh Pandey Sir */}
       <div className="print-watermark" aria-hidden="true">
         <span>GS By Durgesh Pandey Sir</span>
@@ -43,7 +43,7 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
 
       {/* Running Header for every printed page */}
       <div className="print-running-header" aria-hidden="true">
-        <span className="print-running-title font-bold text-amber-400">
+        <span className="print-running-title font-bold text-blue-900">
           GS By Durgesh Pandey Sir - Complete Bilingual Polity Study Notes
         </span>
         <span className="print-running-sub text-xs text-amber-200">
@@ -58,21 +58,21 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
       </div>
 
       {/* COVER / TITLE BANNER */}
-      <div className="print-cover-sheet border-b-4 border-amber-500 pb-6 mb-8 text-center print-page-avoid-break bg-[#0a192f]">
-        <div className="inline-block border border-amber-500 px-4 py-1 text-xs font-bold tracking-widest uppercase mb-3 text-amber-400">
+      <div className="print-cover-sheet border-b-4 border-amber-500 pb-6 mb-8 text-center print-page-avoid-break bg-[#f8fafc]">
+        <div className="inline-block border border-amber-500 px-4 py-1 text-xs font-bold tracking-widest uppercase mb-3 text-blue-900">
           COMPLETE BILINGUAL MASTER STUDY REPOSITORY (SAVE EDITION)
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-amber-400 mb-1">
+        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-blue-900 mb-1">
           GS By Durgesh Pandey Sir - Complete Bilingual Polity Study Notes
         </h1>
         <h2 className="text-base sm:text-lg font-bold text-amber-200 mb-3">
           भारतीय संविधान एवं राजव्यवस्था • सम्पूर्ण पाठ्यक्रम प्रामाणिक नोट्स
         </h2>
-        <p className="text-xs text-slate-300 max-w-3xl mx-auto leading-normal">
+        <p className="text-xs text-slate-600 max-w-3xl mx-auto leading-normal">
           विशेष रूप से उत्तर प्रदेश उप-निरीक्षक (UPSI), यूपी पुलिस कांस्टेबल, SSC CGL/CPO, RO/ARO एवं राज्य लोक सेवा आयोग परीक्षाओं हेतु।
           Includes Articles 1-395+, 18 Historical Acts (1773-1947), 12 Schedules, Magic 89/90 Comparative Rules, 45 Landmark Supreme Court Verdicts, Polity Terminology, and 182 Practice Questions.
         </p>
-        <div className="mt-4 pt-3 border-t border-slate-700 flex flex-wrap justify-center gap-4 text-xs font-semibold text-amber-300">
+        <div className="mt-4 pt-3 border-t border-slate-300 flex flex-wrap justify-center gap-4 text-xs font-semibold text-blue-900">
           <span>📖 395+ Articles</span>
           <span>•</span>
           <span>🏛️ 18 Historical Acts</span>
@@ -90,21 +90,21 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
       {/* SECTION 1: MASTER TABLE OF CONTENTS (27 CHAPTERS • COMPLETE INDEX) */}
       <section className="print-section mb-10 print-page-break-before">
         <div className="print-section-header border-b-2 border-amber-500 pb-2 mb-4 flex justify-between items-baseline">
-          <h2 className="text-xl font-bold uppercase tracking-wide text-amber-400">
+          <h2 className="text-xl font-bold uppercase tracking-wide text-blue-900">
             अध्याय अनुक्रमणिका (Table of Contents)
           </h2>
-          <span className="text-xs font-bold text-amber-300">
+          <span className="text-xs font-bold text-blue-900">
             27 Chapters Complete
           </span>
         </div>
 
         <div className="overflow-x-auto print-page-avoid-break">
-          <table className="w-full text-left border-collapse border border-[#1e3a5f] text-xs">
+          <table className="w-full text-left border-collapse border border-[#e2e8f0] text-xs">
             <thead>
-              <tr className="bg-[#0f2744] text-amber-400 border-b border-[#1e3a5f]">
-                <th className="p-2 text-center border-r border-[#1e3a5f] w-12 font-bold">क्र.सं.</th>
-                <th className="p-2 border-r border-[#1e3a5f] w-1/3 font-bold">अध्याय का नाम (Chapter Title)</th>
-                <th className="p-2 border-r border-[#1e3a5f] font-bold">विस्तृत विषय-वस्तु (Coverage & Key Topics)</th>
+              <tr className="bg-[#ffffff] text-blue-900 border-b border-[#e2e8f0]">
+                <th className="p-2 text-center border-r border-[#e2e8f0] w-12 font-bold">क्र.सं.</th>
+                <th className="p-2 border-r border-[#e2e8f0] w-1/3 font-bold">अध्याय का नाम (Chapter Title)</th>
+                <th className="p-2 border-r border-[#e2e8f0] font-bold">विस्तृत विषय-वस्तु (Coverage & Key Topics)</th>
               </tr>
             </thead>
             <tbody>
@@ -114,16 +114,16 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
                 return (
                   <tr
                     key={ch.id || idx}
-                    className={`border-b border-[#1e3a5f] ${isEven ? 'bg-[#0a192f]' : 'bg-[#0e213d]'}`}
+                    className={`border-b border-[#e2e8f0] ${isEven ? 'bg-[#f8fafc]' : 'bg-[#0e213d]'}`}
                   >
-                    <td className="p-2 text-center font-bold text-amber-400 border-r border-[#1e3a5f] align-top">
+                    <td className="p-2 text-center font-bold text-blue-900 border-r border-[#e2e8f0] align-top">
                       {chNum}
                     </td>
-                    <td className="p-2 border-r border-[#1e3a5f] align-top">
-                      <div className="font-bold text-white text-[13px]">{ch.title.hi}</div>
-                      <div className="text-[11px] text-slate-300 font-medium">{ch.title.en}</div>
+                    <td className="p-2 border-r border-[#e2e8f0] align-top">
+                      <div className="font-bold text-slate-900 text-[13px]">{ch.title.hi}</div>
+                      <div className="text-[11px] text-slate-600 font-medium">{ch.title.en}</div>
                     </td>
-                    <td className="p-2 border-r border-[#1e3a5f] text-slate-200 text-[11.5px] leading-relaxed align-top border-r-0">
+                    <td className="p-2 border-r border-[#e2e8f0] text-slate-800 text-[11.5px] leading-relaxed align-top border-r-0">
                       {ch.description.hi}
                     </td>
                   </tr>
@@ -229,7 +229,7 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
             >
               <div className="flex justify-between items-center border-b border-gray-300 pb-1.5">
                 <h3 className="font-bold text-sm text-black">
-                  <span className="bg-black text-white px-2 py-0.5 rounded text-xs font-mono mr-2">
+                  <span className="bg-black text-slate-900 px-2 py-0.5 rounded text-xs font-mono mr-2">
                     {act.year}
                   </span>
                   {act.title.hi} ({act.title.en})
@@ -304,7 +304,7 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
             >
               <div className="flex justify-between items-center border-b border-gray-300 pb-1">
                 <h3 className="font-bold text-sm text-black flex items-center gap-2">
-                  <span className="bg-black text-white px-2 py-0.5 rounded font-mono text-xs">
+                  <span className="bg-black text-slate-900 px-2 py-0.5 rounded font-mono text-xs">
                     अनुसूची {sch.number}
                   </span>
                   <span>{sch.title.hi}</span>
@@ -500,7 +500,7 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
               >
                 <div className="flex justify-between items-start gap-2 border-b border-gray-300 pb-1.5">
                   <div className="font-bold text-sm text-black">
-                    <span className="bg-black text-white px-1.5 py-0.5 rounded text-xs font-mono mr-2">
+                    <span className="bg-black text-slate-900 px-1.5 py-0.5 rounded text-xs font-mono mr-2">
                       Q{qNum}
                     </span>
                     <span>{q.question.hi}</span>

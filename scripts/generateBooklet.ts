@@ -80,7 +80,7 @@ export function generateBookletHtml(): string {
     }
 
     body {
-      background-color: #0a192f;
+      background-color: #f8fafc;
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='550' height='380' viewBox='0 0 550 380'><text x='50%' y='50%' fill='rgba(251,191,36,0.05)' font-family='Cinzel, serif' font-size='22' font-weight='800' transform='rotate(-28 275 190)' text-anchor='middle'>GS By Durgesh Pandey Sir</text></svg>");
       background-repeat: repeat;
       background-attachment: fixed;
@@ -98,7 +98,7 @@ export function generateBookletHtml(): string {
     .booklet-container {
       max-width: 880px;
       margin: 0 auto;
-      background: #0a192f;
+      background: #f8fafc;
       color: #ffffff;
     }
 
@@ -108,7 +108,7 @@ export function generateBookletHtml(): string {
       position: sticky;
       top: 10px;
       z-index: 1000;
-      background: #0f2744;
+      background: #ffffff;
       color: #ffffff;
       padding: 12px 18px;
       border-radius: 12px;
@@ -206,7 +206,7 @@ export function generateBookletHtml(): string {
     }
 
     .section-banner {
-      background-color: #0f2744;
+      background-color: #ffffff;
       border: 1.5px solid #f59e0b;
       color: #fbbf24;
       padding: 9px 14px;
@@ -223,7 +223,7 @@ export function generateBookletHtml(): string {
 
     .card,
     .card-item {
-      border: 1px solid #1e3a5f;
+      border: 1px solid #e2e8f0;
       border-radius: 6px;
       padding: 10px 12px;
       margin-bottom: 12px;
@@ -238,7 +238,7 @@ export function generateBookletHtml(): string {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      border-bottom: 1px solid #1e3a5f;
+      border-bottom: 1px solid #e2e8f0;
       padding-bottom: 6px;
       margin-bottom: 8px;
     }
@@ -250,7 +250,7 @@ export function generateBookletHtml(): string {
     }
 
     .badge-art {
-      background: #0f2744;
+      background: #ffffff;
       border: 1px solid #f59e0b;
       color: #fbbf24;
       font-family: monospace;
@@ -296,16 +296,16 @@ export function generateBookletHtml(): string {
       margin: 12px 0;
       font-size: 8.5pt;
       background: #0b1d36;
-      border: 1.5px solid #1e3a5f;
+      border: 1.5px solid #e2e8f0;
     }
     th, td {
-      border: 1px solid #1e3a5f;
+      border: 1px solid #e2e8f0;
       padding: 6px 8px;
       text-align: left;
       vertical-align: top;
     }
     th {
-      background: #0f2744;
+      background: #ffffff;
       font-weight: 800;
       color: #fbbf24;
       text-transform: uppercase;
@@ -321,7 +321,7 @@ export function generateBookletHtml(): string {
     }
 
     .part-header {
-      background: #0f2744;
+      background: #ffffff;
       border-left: 5px solid #f59e0b;
       color: #fbbf24;
       padding: 7px 10px;
@@ -332,7 +332,7 @@ export function generateBookletHtml(): string {
     }
 
     .deep-dive-box {
-      background: #0f2744;
+      background: #ffffff;
       border: 1px solid #f59e0b;
       border-radius: 6px;
       padding: 8px 12px;
@@ -355,7 +355,7 @@ export function generateBookletHtml(): string {
     }
     .option-normal {
       background: #0c1c33;
-      border: 1px solid #1e3a5f;
+      border: 1px solid #e2e8f0;
       color: #cbd5e1;
     }
 
@@ -393,7 +393,7 @@ export function generateBookletHtml(): string {
 
       /* Force the browser to render the deep navy backgrounds and gold colors */
       body, html, .master-container {
-        background-color: #0a192f !important;
+        background-color: #f8fafc !important;
         color: #ffffff !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -526,7 +526,7 @@ export function generateBookletHtml(): string {
 
       if (art.clauseDetails && art.clauseDetails.length > 0) {
         html += `
-      <div style="margin-top: 6px; padding-top: 5px; border-top: 1px solid #1e3a5f;">
+      <div style="margin-top: 6px; padding-top: 5px; border-top: 1px solid #e2e8f0;">
         <strong style="font-size: 8.5pt; color: #fbbf24;">उपकंडीय विश्लेषण (Clauses & Sub-clauses):</strong>
         <div style="margin-top: 4px; font-size: 8.5pt;">`;
         art.clauseDetails.forEach((c) => {
@@ -658,7 +658,7 @@ export function generateBookletHtml(): string {
       <div class="text-english">
         <strong>Context:</strong> ${escapeHtml(act.background.en)}
       </div>
-      <div style="margin-top: 6px; padding-top: 5px; border-top: 1px solid #1e3a5f;">
+      <div style="margin-top: 6px; padding-top: 5px; border-top: 1px solid #e2e8f0;">
         <strong style="font-size: 9pt; color: #fbbf24;">प्रमुख संवैधानिक प्रावधान एवं विश्लेषण:</strong>
         <ul style="margin: 4px 0 4px 18px; padding: 0; font-size: 9pt;">`;
 
@@ -676,12 +676,12 @@ export function generateBookletHtml(): string {
 
     if (act.objectives && act.objectives.length > 0) {
       html += `
-      <div style="margin-top: 6px; padding-top: 5px; border-top: 1px solid #1e3a5f; font-size: 8.5pt;">
+      <div style="margin-top: 6px; padding-top: 5px; border-top: 1px solid #e2e8f0; font-size: 8.5pt;">
         <strong style="color: #fbbf24;">उद्देश्य एवं परीक्षा बिंदु:</strong>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-top: 4px;">`;
       act.objectives.forEach((obj) => {
         html += `
-          <div style="background: #0f2744; border: 1px solid #1e3a5f; padding: 5px 8px; border-radius: 4px; color: #e2e8f0;">
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 5px 8px; border-radius: 4px; color: #e2e8f0;">
             ✓ ${escapeHtml(obj.hi)}
           </div>`;
       });
@@ -807,7 +807,7 @@ export function generateBookletHtml(): string {
       <div style="font-size: 9pt; margin-bottom: 5px;">
         <strong style="color: #fbbf24;">संवैधानिक विषय:</strong> ${escapeHtml(cs.subject.hi)} <span style="font-size: 8pt; color: #94a3b8;">(${escapeHtml(cs.subject.en)})</span>
       </div>
-      <div class="text-hindi" style="background: #0f2744; border-left: 3px solid #f59e0b; padding: 7px 10px; border-radius: 4px;">
+      <div class="text-hindi" style="background: #ffffff; border-left: 3px solid #f59e0b; padding: 7px 10px; border-radius: 4px;">
         <strong style="color: #fbbf24;">ऐतिहासिक अधिनिर्णय (Ruling Summary):</strong> ${escapeHtml(cs.rulingSummary.hi)}
         <div class="text-english" style="margin-top: 4px; padding-top: 4px;">${escapeHtml(cs.rulingSummary.en)}</div>
       </div>
@@ -842,7 +842,7 @@ export function generateBookletHtml(): string {
           ${escapeHtml(term.definition.en)}
         </div>
         ${term.context ? `
-        <div style="background: #0f2744; border: 1px solid #1e3a5f; padding: 4px 8px; font-size: 8pt; margin-top: 5px; border-radius: 3px; color: #cbd5e1;">
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 4px 8px; font-size: 8pt; margin-top: 5px; border-radius: 3px; color: #cbd5e1;">
           <strong style="color: #fbbf24;">संवैधानिक संदर्भ:</strong> ${escapeHtml(term.context.hi)}
         </div>` : ''}
       </div>`;
@@ -883,7 +883,7 @@ export function generateBookletHtml(): string {
 
     html += `
       </div>
-      <div style="background: #0f2744; border-left: 3px solid #f59e0b; padding: 6px 10px; font-size: 8.5pt; border-radius: 0 4px 4px 0;">
+      <div style="background: #ffffff; border-left: 3px solid #f59e0b; padding: 6px 10px; font-size: 8.5pt; border-radius: 0 4px 4px 0;">
         <strong style="color: #fbbf24;">उत्तर एवं व्याख्या:</strong> ${escapeHtml(q.explanation.hi)}
         ${q.explanation.en ? `<div style="font-size: 8pt; color: #94a3b8; margin-top: 3px; font-style: italic;">${escapeHtml(q.explanation.en)}</div>` : ''}
       </div>

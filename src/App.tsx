@@ -20,7 +20,7 @@ import { QuestionsQuizView } from './components/QuestionsQuizView';
 import { ChaptersIndexView } from './components/ChaptersIndexView';
 import { PrintModal } from './components/PrintModal';
 
-import { Printer, Globe, ArrowUp, Youtube, Instagram } from 'lucide-react';
+import { Printer, Globe, ArrowUp, Youtube, Instagram, Scale, Landmark } from 'lucide-react';
 
 export function App() {
   const [language, setLanguage] = useState<Language>('hi');
@@ -57,7 +57,14 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a192f] text-slate-100 flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col font-sans selection:bg-amber-500 selection:text-white relative overflow-x-hidden">
+      {/* Background Polity & Judiciary Watermark */}
+      <div className="fixed inset-0 pointer-events-none flex flex-col items-center justify-center z-0 opacity-[0.04] text-blue-900 overflow-hidden space-y-24">
+        <Scale strokeWidth={0.5} className="w-[120vw] h-[120vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px]" />
+        <Landmark strokeWidth={0.5} className="w-[120vw] h-[120vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px]" />
+      </div>
+
+      <div className="relative z-10 flex flex-col flex-1 w-full">
         {/* Header with Search & Global Actions */}
         <Header
           language={language}
@@ -77,12 +84,12 @@ export function App() {
               onClick={() => setActiveTab('articles')}
               className={`p-3 rounded-xl border cursor-pointer transition text-center ${
                 activeTab === 'articles'
-                  ? 'bg-amber-500/20 border-amber-500/60 shadow-md'
-                  : 'bg-[#0f2744]/70 border-slate-800 hover:border-amber-500/30'
+                  ? 'bg-blue-50 border-blue-900 shadow-md'
+                  : 'bg-[#ffffff]/70 border-slate-200 hover:border-slate-300'
               }`}
             >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">395</div>
-              <div className="text-[11px] text-slate-300">
+              <div className="text-blue-900 text-lg font-bold font-cinzel">395</div>
+              <div className="text-[11px] text-slate-600">
                 {language === 'hi' ? 'अनुच्छेद (1-395)' : 'Articles (1-395)'}
               </div>
             </div>
@@ -91,12 +98,12 @@ export function App() {
               onClick={() => setActiveTab('historical')}
               className={`p-3 rounded-xl border cursor-pointer transition text-center ${
                 activeTab === 'historical'
-                  ? 'bg-amber-500/20 border-amber-500/60 shadow-md'
-                  : 'bg-[#0f2744]/70 border-slate-800 hover:border-amber-500/30'
+                  ? 'bg-blue-50 border-blue-900 shadow-md'
+                  : 'bg-[#ffffff]/70 border-slate-200 hover:border-slate-300'
               }`}
             >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">15</div>
-              <div className="text-[11px] text-slate-300">
+              <div className="text-blue-900 text-lg font-bold font-cinzel">15</div>
+              <div className="text-[11px] text-slate-600">
                 {language === 'hi' ? 'अधिनियम (1773-1947)' : 'Historical Acts'}
               </div>
             </div>
@@ -105,12 +112,12 @@ export function App() {
               onClick={() => setActiveTab('schedules')}
               className={`p-3 rounded-xl border cursor-pointer transition text-center ${
                 activeTab === 'schedules'
-                  ? 'bg-amber-500/20 border-amber-500/60 shadow-md'
-                  : 'bg-[#0f2744]/70 border-slate-800 hover:border-amber-500/30'
+                  ? 'bg-blue-50 border-blue-900 shadow-md'
+                  : 'bg-[#ffffff]/70 border-slate-200 hover:border-slate-300'
               }`}
             >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">12</div>
-              <div className="text-[11px] text-slate-300">
+              <div className="text-blue-900 text-lg font-bold font-cinzel">12</div>
+              <div className="text-[11px] text-slate-600">
                 {language === 'hi' ? 'अनुसूचियां (1-12)' : '12 Schedules'}
               </div>
             </div>
@@ -119,12 +126,12 @@ export function App() {
               onClick={() => setActiveTab('magic89')}
               className={`p-3 rounded-xl border cursor-pointer transition text-center ${
                 activeTab === 'magic89'
-                  ? 'bg-amber-500/20 border-amber-500/60 shadow-md'
-                  : 'bg-[#0f2744]/70 border-slate-800 hover:border-amber-500/30'
+                  ? 'bg-blue-50 border-blue-900 shadow-md'
+                  : 'bg-[#ffffff]/70 border-slate-200 hover:border-slate-300'
               }`}
             >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">89</div>
-              <div className="text-[11px] text-slate-300">
+              <div className="text-blue-900 text-lg font-bold font-cinzel">89</div>
+              <div className="text-[11px] text-slate-600">
                 {language === 'hi' ? 'जादुई ट्रिक (30 जोड़े)' : 'Magic 89 Pairs'}
               </div>
             </div>
@@ -133,12 +140,12 @@ export function App() {
               onClick={() => setActiveTab('cases')}
               className={`p-3 rounded-xl border cursor-pointer transition text-center ${
                 activeTab === 'cases'
-                  ? 'bg-amber-500/20 border-amber-500/60 shadow-md'
-                  : 'bg-[#0f2744]/70 border-slate-800 hover:border-amber-500/30'
+                  ? 'bg-blue-50 border-blue-900 shadow-md'
+                  : 'bg-[#ffffff]/70 border-slate-200 hover:border-slate-300'
               }`}
             >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">15+</div>
-              <div className="text-[11px] text-slate-300">
+              <div className="text-blue-900 text-lg font-bold font-cinzel">15+</div>
+              <div className="text-[11px] text-slate-600">
                 {language === 'hi' ? 'सुप्रीम कोर्ट वाद' : 'Landmark Verdicts'}
               </div>
             </div>
@@ -147,12 +154,12 @@ export function App() {
               onClick={() => setActiveTab('chapters')}
               className={`p-3 rounded-xl border cursor-pointer transition text-center ${
                 activeTab === 'chapters'
-                  ? 'bg-amber-500/20 border-amber-500/60 shadow-md'
-                  : 'bg-[#0f2744]/70 border-slate-800 hover:border-amber-500/30'
+                  ? 'bg-blue-50 border-blue-900 shadow-md'
+                  : 'bg-[#ffffff]/70 border-slate-200 hover:border-slate-300'
               }`}
             >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">23</div>
-              <div className="text-[11px] text-slate-300">
+              <div className="text-blue-900 text-lg font-bold font-cinzel">23</div>
+              <div className="text-[11px] text-slate-600">
                 {language === 'hi' ? 'विषय सूची' : 'Master Index'}
               </div>
             </div>
@@ -202,9 +209,9 @@ export function App() {
           <button
             id="floating-lang-toggle"
             onClick={() => setLanguage(language === 'hi' ? 'en' : 'hi')}
-            className="floating-btn flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#0f2744]/95 hover:bg-[#153a66] border border-amber-500/50 text-amber-300 text-[11px] sm:text-xs font-bold shadow-2xl hover:scale-105 active:scale-95 transition backdrop-blur-md"
+            className="floating-btn flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#ffffff]/95 hover:bg-[#e2e8f0] border border-slate-300 text-blue-900 text-[11px] sm:text-xs font-bold shadow-2xl hover:scale-105 active:scale-95 transition backdrop-blur-md"
           >
-            <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 animate-spin-slow shrink-0" />
+            <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-900 animate-spin-slow shrink-0" />
             <span className="whitespace-nowrap">{language === 'hi' ? 'Switch to English' : 'हिन्दी में पढ़ें'}</span>
           </button>
 
@@ -212,16 +219,16 @@ export function App() {
           <button
             id="floating-print-btn"
             onClick={handleOpenPrintBooklet}
-            className="floating-btn flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 text-[11px] sm:text-xs font-extrabold shadow-2xl hover:scale-105 active:scale-95 transition"
+            className="floating-btn flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-blue-900 hover:bg-blue-800 text-white text-[11px] sm:text-xs font-extrabold shadow-2xl hover:scale-105 active:scale-95 transition"
           >
-            <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-950 shrink-0" />
+            <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />
             <span className="whitespace-nowrap">{language === 'hi' ? '💾 सेव बुकलेट / PDF' : '💾 Save Booklet / PDF'}</span>
           </button>
 
           {/* Back to top */}
           <button
             onClick={scrollToTop}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#0f2744]/90 hover:bg-[#153a66] border border-slate-700 text-slate-300 hover:text-white flex items-center justify-center shadow-lg transition"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#ffffff]/90 hover:bg-[#e2e8f0] border border-slate-300 text-slate-600 hover:text-slate-900 flex items-center justify-center shadow-lg transition"
             title="Scroll to top"
           >
             <ArrowUp className="w-4 h-4" />
@@ -229,17 +236,17 @@ export function App() {
         </div>
 
         {/* Screen Footer */}
-        <footer className="mt-12 border-t border-slate-800/80 bg-[#071322] py-6 text-center text-xs text-slate-400 space-y-3 no-print">
+        <footer className="mt-12 border-t border-slate-200/80 bg-[#f1f5f9] py-6 text-center text-xs text-slate-600 space-y-3 no-print">
           <div className="flex items-center justify-center gap-3">
             <a
               id="footer-youtube-btn"
               href="https://www.youtube.com/c/1dayers"
               target="_blank"
               rel="noopener noreferrer"
-              className="youtube-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-600/15 hover:bg-red-600/25 border border-red-500/40 text-red-400 hover:text-red-300 text-xs font-semibold transition"
+              className="youtube-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 border border-red-200 text-red-700 hover:text-red-800 text-xs font-semibold transition"
               title="YouTube Channel (@1dayers)"
             >
-              <Youtube className="w-4 h-4 text-red-400" />
+              <Youtube className="w-4 h-4 text-red-700" />
               <span>YouTube: @1dayers</span>
             </a>
             <a
@@ -247,17 +254,17 @@ export function App() {
               href="https://www.instagram.com/upsc_therapy/"
               target="_blank"
               rel="noopener noreferrer"
-              className="instagram-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-pink-600/15 hover:bg-pink-600/25 border border-pink-500/40 text-pink-400 hover:text-pink-300 text-xs font-semibold transition"
+              className="instagram-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-700 hover:text-pink-800 text-xs font-semibold transition"
               title="Instagram (@upsc_therapy)"
             >
-              <Instagram className="w-4 h-4 text-pink-400" />
+              <Instagram className="w-4 h-4 text-pink-700" />
               <span>Instagram: @upsc_therapy</span>
             </a>
           </div>
-          <p className="font-cinzel text-amber-300 font-bold">
+          <p className="font-cinzel text-blue-900 font-bold">
             GS By Durgesh Pandey Sir • Complete Bilingual Polity Master Repository
           </p>
-          <p className="text-[11px] text-slate-400">
+          <p className="text-[11px] text-slate-600">
             {language === 'hi'
               ? 'सम्पूर्ण प्रामाणिक पाठ्यक्रम • 100% देवनागरी व अंग्रेजी अनुवाद सहित संकलित।'
               : 'Authentic master study curriculum • 100% bilingual Hindi & English compendium.'}
@@ -271,7 +278,8 @@ export function App() {
           language={language}
         />
       </div>
-    );
-  }
+    </div>
+  );
+}
 
 export default App;

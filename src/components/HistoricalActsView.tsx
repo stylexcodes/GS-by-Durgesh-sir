@@ -41,14 +41,14 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
   return (
     <div className="space-y-6">
       {/* Overview Banner */}
-      <div className="bg-gradient-to-r from-[#0f2744] to-[#12365e] border border-amber-500/30 rounded-xl p-5 shadow-xl">
-        <h2 className="text-lg font-bold text-white font-cinzel flex items-center gap-2">
-          <BookOpen className="w-5 h-5 text-amber-400" />
+      <div className="bg-gradient-to-r from-[#ffffff] to-[#12365e] border border-slate-300 rounded-xl p-5 shadow-xl">
+        <h2 className="text-lg font-bold text-slate-900 font-cinzel flex items-center gap-2">
+          <BookOpen className="w-5 h-5 text-blue-900" />
           {language === 'hi'
             ? 'भारतीय संविधान का ऐतिहासिक विकास (1773 - 1947)'
             : 'Historical Evolution of the Indian Constitution (1773 - 1947)'}
         </h2>
-        <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+        <p className="text-xs text-slate-600 mt-1 leading-relaxed">
           {language === 'hi'
             ? 'ईस्ट इंडिया कंपनी के शासन (1773-1853) से लेकर ब्रिटिश ताज के शासन (1858-1947) तक के सभी 15 प्रमुख संवैधानिक अधिनियम, प्रावधान व परीक्षा उपयोगी ट्रिक्स।'
             : 'All 15 major constitutional milestones from Company Rule (1773-1853) to Crown Rule (1858-1947) with detailed legal provisions and memory mnemonics.'}
@@ -63,49 +63,49 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
             <div
               key={act.id}
               id={`act-card-${act.id}`}
-              className="bg-[#0f2744]/90 border border-amber-500/25 rounded-xl shadow-lg overflow-hidden transition"
+              className="bg-[#ffffff]/90 border border-amber-500/25 rounded-xl shadow-lg overflow-hidden transition"
             >
               {/* Card Header */}
               <div
                 onClick={() => toggleExpand(act.id)}
-                className="p-4 cursor-pointer hover:bg-[#133157]/50 flex items-center justify-between gap-4 border-b border-slate-800"
+                className="p-4 cursor-pointer hover:bg-slate-100/50 flex items-center justify-between gap-4 border-b border-slate-200"
               >
                 <div className="flex items-center gap-3">
-                  <div className="flex flex-col items-center justify-center w-14 h-14 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300">
-                    <Calendar className="w-4 h-4 mb-0.5 text-amber-400" />
+                  <div className="flex flex-col items-center justify-center w-14 h-14 rounded-lg bg-amber-500/10 border border-slate-300 text-blue-900">
+                    <Calendar className="w-4 h-4 mb-0.5 text-blue-900" />
                     <span className="text-sm font-bold font-cinzel">{act.year}</span>
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-white leading-snug">
+                    <h3 className="text-base font-bold text-slate-900 leading-snug">
                       {language === 'hi' ? act.title.hi : act.title.en}
                     </h3>
-                    <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                    <p className="text-xs text-slate-600 line-clamp-1 mt-0.5">
                       {language === 'hi' ? act.background.hi : act.background.en}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-amber-400 font-medium hidden sm:inline">
+                  <span className="text-xs text-blue-900 font-medium hidden sm:inline">
                     {isExpanded ? (language === 'hi' ? 'संक्षिप्त' : 'Close') : (language === 'hi' ? 'विस्तार' : 'Expand')}
                   </span>
                   {isExpanded ? (
-                    <ChevronUp className="w-5 h-5 text-amber-400" />
+                    <ChevronUp className="w-5 h-5 text-blue-900" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-amber-400" />
+                    <ChevronDown className="w-5 h-5 text-blue-900" />
                   )}
                 </div>
               </div>
 
               {/* Collapsible Content - forced visible in print */}
-              <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block p-5 space-y-4 bg-[#0a192f]/50 print:bg-white`}>
+              <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block p-5 space-y-4 bg-[#f8fafc]/50 print:bg-white`}>
                 {/* Background Section */}
-                <div className="bg-[#0a192f] print:bg-gray-50 p-3.5 rounded-lg border border-slate-800 print:border-gray-300">
-                  <h4 className="text-xs font-bold text-amber-400 print:text-black uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                <div className="bg-[#f8fafc] print:bg-gray-50 p-3.5 rounded-lg border border-slate-200 print:border-gray-300">
+                  <h4 className="text-xs font-bold text-blue-900 print:text-black uppercase tracking-wider mb-1 flex items-center gap-1.5">
                     <AlertCircle className="w-3.5 h-3.5 no-print" />
                     {language === 'hi' ? 'पृष्ठभूमि एवं संदर्भ:' : 'Historical Background:'}
                   </h4>
-                  <p className="text-xs text-slate-200 print:text-black leading-relaxed">
+                  <p className="text-xs text-slate-800 print:text-black leading-relaxed">
                     {language === 'hi' ? act.background.hi : act.background.en}
                   </p>
                 </div>
@@ -119,8 +119,8 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
                     </h4>
                     <ul className="space-y-1.5 pl-2">
                       {act.objectives.map((obj, idx) => (
-                        <li key={idx} className="text-xs text-slate-300 print:text-gray-800 flex items-start gap-2">
-                          <span className="text-amber-400 print:text-black font-bold">•</span>
+                        <li key={idx} className="text-xs text-slate-600 print:text-gray-800 flex items-start gap-2">
+                          <span className="text-blue-900 print:text-black font-bold">•</span>
                           <span>{language === 'hi' ? obj.hi : obj.en}</span>
                         </li>
                       ))}
@@ -130,19 +130,19 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
 
                 {/* Key Provisions */}
                 <div>
-                  <h4 className="text-xs font-bold text-amber-300 print:text-black uppercase tracking-wider mb-2">
+                  <h4 className="text-xs font-bold text-blue-900 print:text-black uppercase tracking-wider mb-2">
                     {language === 'hi' ? 'अधिनियम के मुख्य प्रावधान (कानूनी बिंदु):' : 'Key Statutory Provisions:'}
                   </h4>
                   <div className="space-y-2">
                     {act.provisions.map((prov, idx) => (
                       <div
                         key={idx}
-                        className="bg-[#11243e] print:bg-gray-50 p-3 rounded-lg border border-slate-800/80 print:border-gray-300 text-xs text-slate-200 print:text-black leading-relaxed"
+                        className="bg-[#11243e] print:bg-gray-50 p-3 rounded-lg border border-slate-200/80 print:border-gray-300 text-xs text-slate-800 print:text-black leading-relaxed"
                       >
-                        <div className="font-medium text-white print:text-black mb-1">
+                        <div className="font-medium text-slate-900 print:text-black mb-1">
                           {idx + 1}. {language === 'hi' ? prov.hi : prov.en}
                         </div>
-                        <div className="text-[11px] text-slate-400 print:text-gray-700 font-sans pl-3 border-l border-amber-500/30 print:border-black">
+                        <div className="text-[11px] text-slate-600 print:text-gray-700 font-sans pl-3 border-l border-slate-300 print:border-black">
                           {language === 'hi' ? prov.en : prov.hi}
                         </div>
                       </div>
@@ -153,8 +153,8 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
                 {/* Mnemonic Trick if available */}
                 {act.trickMnemonic && (
                   <div className="bg-gradient-to-r from-amber-500/15 to-amber-600/10 print:bg-gray-100 border border-amber-500/40 print:border-black p-3 rounded-lg">
-                    <div className="flex items-center gap-2 text-xs font-bold text-amber-300 print:text-black mb-1">
-                      <Sparkles className="w-4 h-4 text-amber-400 print:text-black no-print" />
+                    <div className="flex items-center gap-2 text-xs font-bold text-blue-900 print:text-black mb-1">
+                      <Sparkles className="w-4 h-4 text-blue-900 print:text-black no-print" />
                       <span>{language === 'hi' ? 'UPSI याद रखने की ट्रिक (Mnemonic):' : 'Exam Memory Mnemonic:'}</span>
                     </div>
                     <p className="text-xs text-amber-100 print:text-black font-medium">
@@ -165,12 +165,12 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
 
                 {/* Special Historical Notes */}
                 {act.notes && act.notes.length > 0 && (
-                  <div className="bg-[#132a48] print:bg-gray-50 p-3 rounded-lg border border-slate-700/60 print:border-gray-300 text-xs space-y-1">
-                    <span className="font-bold text-amber-400 print:text-black block">
+                  <div className="bg-[#132a48] print:bg-gray-50 p-3 rounded-lg border border-slate-300/60 print:border-gray-300 text-xs space-y-1">
+                    <span className="font-bold text-blue-900 print:text-black block">
                       {language === 'hi' ? 'विशेष टिप्पणी एवं परीक्षा फैक्ट:' : 'Special Exam Notes:'}
                     </span>
                     {act.notes.map((note, idx) => (
-                      <p key={idx} className="text-slate-300 print:text-gray-800 leading-relaxed">
+                      <p key={idx} className="text-slate-600 print:text-gray-800 leading-relaxed">
                         {language === 'hi' ? note.hi : note.en}
                       </p>
                     ))}
