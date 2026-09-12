@@ -67,9 +67,9 @@ export function App() {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5 sm:py-6 pb-28 sm:pb-12 space-y-6">
         {/* Quick Highlights & Metrics Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 no-print">
+        <div className="metric-cards-strip grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 no-print">
           <div
             onClick={() => setActiveTab('articles')}
             className={`p-3 rounded-xl border cursor-pointer transition text-center ${
@@ -194,31 +194,31 @@ export function App() {
       </main>
 
       {/* Floating Action Buttons: Bilingual Toggle, Save PDF, Scroll to Top */}
-      <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2.5 no-print">
+      <div id="floating-actions-container" className="floating-actions fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 flex flex-col items-end gap-2 sm:gap-2.5 no-print">
         {/* Floating Language Switcher */}
         <button
           id="floating-lang-toggle"
           onClick={() => setLanguage(language === 'hi' ? 'en' : 'hi')}
-          className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#0f2744] hover:bg-[#153a66] border border-amber-500/50 text-amber-300 text-xs font-bold shadow-2xl hover:scale-105 active:scale-95 transition backdrop-blur-md"
+          className="floating-btn flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#0f2744]/95 hover:bg-[#153a66] border border-amber-500/50 text-amber-300 text-[11px] sm:text-xs font-bold shadow-2xl hover:scale-105 active:scale-95 transition backdrop-blur-md"
         >
-          <Globe className="w-4 h-4 text-amber-400 animate-spin-slow" />
-          <span>{language === 'hi' ? 'Switch to English' : 'हिन्दी में पढ़ें'}</span>
+          <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 animate-spin-slow shrink-0" />
+          <span className="whitespace-nowrap">{language === 'hi' ? 'Switch to English' : 'हिन्दी में पढ़ें'}</span>
         </button>
 
         {/* Floating Save PDF Action Button */}
         <button
           id="floating-print-btn"
           onClick={handlePrint}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 text-xs font-extrabold shadow-2xl hover:scale-105 active:scale-95 transition"
+          className="floating-btn flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 text-[11px] sm:text-xs font-extrabold shadow-2xl hover:scale-105 active:scale-95 transition"
         >
-          <Printer className="w-4 h-4 text-slate-950" />
-          <span>{language === 'hi' ? '💾 सेव PDF / नोट्स डाउनलोड करें' : '💾 SAVE AS PDF / PRINT'}</span>
+          <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-950 shrink-0" />
+          <span className="whitespace-nowrap">{language === 'hi' ? '💾 सेव PDF / प्रिंट नोट्स' : '💾 SAVE AS PDF / PRINT'}</span>
         </button>
 
         {/* Back to top */}
         <button
           onClick={scrollToTop}
-          className="w-10 h-10 rounded-full bg-[#0f2744]/90 hover:bg-[#153a66] border border-slate-700 text-slate-300 hover:text-white flex items-center justify-center shadow-lg transition"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#0f2744]/90 hover:bg-[#153a66] border border-slate-700 text-slate-300 hover:text-white flex items-center justify-center shadow-lg transition"
           title="Scroll to top"
         >
           <ArrowUp className="w-4 h-4" />

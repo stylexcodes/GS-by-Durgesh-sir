@@ -61,8 +61,8 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Search bar & Floating Buttons */}
-          <div className="flex items-center gap-2.5 w-full md:w-auto">
-            <div className="relative flex-1 md:w-72">
+          <div className="header-controls-row flex flex-wrap sm:flex-nowrap items-center gap-2.5 w-full md:w-auto">
+            <div className="search-input-wrapper relative flex-1 min-w-[180px] w-full md:w-72">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
               <input
                 id="search-input"
@@ -86,29 +86,32 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </div>
 
-            {/* Language Switcher */}
-            <button
-              id="lang-toggle-header"
-              onClick={() => setLanguage(language === 'hi' ? 'en' : 'hi')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold tracking-wide transition shadow-sm"
-              title="Switch Language / भाषा बदलें"
-            >
-              <Globe className="w-3.5 h-3.5" />
-              <span>{language === 'hi' ? 'English' : 'हिन्दी'}</span>
-            </button>
+            {/* Language Switcher & Save Button Group */}
+            <div className="header-actions-group flex items-center gap-2 shrink-0">
+              {/* Language Switcher */}
+              <button
+                id="lang-toggle-header"
+                onClick={() => setLanguage(language === 'hi' ? 'en' : 'hi')}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold tracking-wide transition shadow-sm"
+                title="Switch Language / भाषा बदलें"
+              >
+                <Globe className="w-3.5 h-3.5 shrink-0" />
+                <span className="whitespace-nowrap">{language === 'hi' ? 'English' : 'हिन्दी'}</span>
+              </button>
 
-            {/* Print / Save PDF Button */}
-            <button
-              id="print-action-btn"
-              onClick={onPrint}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 text-xs font-bold transition shadow-md hover:shadow-amber-500/20 active:scale-95"
-              title="Save as PDF / प्रिंट करें"
-            >
-              <Printer className="w-3.5 h-3.5 text-slate-950" />
-              <span className="hidden sm:inline">
-                {language === 'hi' ? '💾 सेव PDF' : '💾 SAVE AS PDF'}
-              </span>
-            </button>
+              {/* Print / Save PDF Button */}
+              <button
+                id="print-action-btn"
+                onClick={onPrint}
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 text-xs font-bold transition shadow-md hover:shadow-amber-500/20 active:scale-95"
+                title="Save as PDF / प्रिंट करें"
+              >
+                <Printer className="w-3.5 h-3.5 text-slate-950 shrink-0" />
+                <span className="whitespace-nowrap">
+                  {language === 'hi' ? '💾 सेव PDF' : '💾 SAVE AS PDF'}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
 
