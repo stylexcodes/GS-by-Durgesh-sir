@@ -387,7 +387,7 @@ export function generateBookletHtml(): string {
         display: none !important;
       }
 
-      .utility-toolbar, .no-print, .floating-btn {
+      .utility-toolbar, .no-print, .floating-btn, .youtube-btn, .instagram-btn {
         display: none !important;
       }
 

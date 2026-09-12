@@ -20,7 +20,7 @@ import { QuestionsQuizView } from './components/QuestionsQuizView';
 import { ChaptersIndexView } from './components/ChaptersIndexView';
 import { PrintModal } from './components/PrintModal';
 
-import { Printer, Globe, ArrowUp } from 'lucide-react';
+import { Printer, Globe, ArrowUp, Youtube, Instagram } from 'lucide-react';
 
 export function App() {
   const [language, setLanguage] = useState<Language>('hi');
@@ -229,7 +229,31 @@ export function App() {
         </div>
 
         {/* Screen Footer */}
-        <footer className="mt-12 border-t border-slate-800/80 bg-[#071322] py-6 text-center text-xs text-slate-400 space-y-1 no-print">
+        <footer className="mt-12 border-t border-slate-800/80 bg-[#071322] py-6 text-center text-xs text-slate-400 space-y-3 no-print">
+          <div className="flex items-center justify-center gap-3">
+            <a
+              id="footer-youtube-btn"
+              href="https://www.youtube.com/c/1dayers"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="youtube-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-600/15 hover:bg-red-600/25 border border-red-500/40 text-red-400 hover:text-red-300 text-xs font-semibold transition"
+              title="YouTube Channel (@1dayers)"
+            >
+              <Youtube className="w-4 h-4 text-red-400" />
+              <span>YouTube: @1dayers</span>
+            </a>
+            <a
+              id="footer-instagram-btn"
+              href="https://www.instagram.com/upsc_therapy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="instagram-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-pink-600/15 hover:bg-pink-600/25 border border-pink-500/40 text-pink-400 hover:text-pink-300 text-xs font-semibold transition"
+              title="Instagram (@upsc_therapy)"
+            >
+              <Instagram className="w-4 h-4 text-pink-400" />
+              <span>Instagram: @upsc_therapy</span>
+            </a>
+          </div>
           <p className="font-cinzel text-amber-300 font-bold">
             GS By Durgesh Pandey Sir • Complete Bilingual Polity Master Repository
           </p>

@@ -442,10 +442,11 @@ export const QUESTIONS_BANK: MCQQuestion[] = [
     "options": {
       "a": {
         "hi": "1861 का परिषद अधिनियम",
-        "en": "Indian Councils Act 1892"
+        "en": "Indian Councils Act 1861"
       },
       "b": {
-        "hi": "1892 का परिषद अधिनियम"
+        "hi": "1892 का परिषद अधिनियम",
+        "en": "Indian Councils Act 1892"
       },
       "c": {
         "hi": "1919 का भारत शासन अधिनियम",
@@ -1868,10 +1869,11 @@ export const QUESTIONS_BANK: MCQQuestion[] = [
       },
       "c": {
         "hi": "नियंत्रक एवं महालेखा परीक्षक (CAG)",
-        "en": "Chief Election Commissioner"
+        "en": "Comptroller and Auditor General"
       },
       "d": {
-        "hi": "मुख्य चुनाव आयुक्त"
+        "hi": "मुख्य चुनाव आयुक्त",
+        "en": "Chief Election Commissioner"
       }
     },
     "correctAnswer": "b",

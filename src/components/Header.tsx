@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../types';
-import { BookOpen, Search, Printer, Globe, Sparkles, Scale, ShieldAlert, FileText, CheckCircle2 } from 'lucide-react';
+import { BookOpen, Search, Printer, Globe, Sparkles, Scale, ShieldAlert, FileText, CheckCircle2, Youtube, Instagram } from 'lucide-react';
 
 interface HeaderProps {
   language: Language;
@@ -60,9 +60,9 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* Search bar & Floating Buttons */}
+          {/* Search bar & Action Buttons */}
           <div className="header-controls-row flex flex-wrap sm:flex-nowrap items-center gap-2.5 w-full md:w-auto">
-            <div className="search-input-wrapper relative flex-1 min-w-[180px] w-full md:w-72">
+            <div className="search-input-wrapper relative flex-1 min-w-[180px] w-full md:w-64">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
               <input
                 id="search-input"
@@ -86,13 +86,41 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </div>
 
-            {/* Language Switcher & Save Button Group */}
-            <div className="header-actions-group flex items-center gap-2 shrink-0">
+            {/* Social Media & Action Buttons Group */}
+            <div className="header-actions-group flex items-center gap-1.5 sm:gap-2 shrink-0">
+              {/* YouTube Channel Link */}
+              <a
+                id="header-youtube-btn"
+                href="https://www.youtube.com/c/1dayers"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="youtube-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-red-600/15 hover:bg-red-600/25 border border-red-500/40 text-red-400 hover:text-red-300 text-xs font-semibold tracking-wide transition shadow-sm group"
+                title="YouTube: @1dayers"
+                aria-label="YouTube Channel"
+              >
+                <Youtube className="w-3.5 h-3.5 text-red-400 group-hover:scale-110 transition-transform shrink-0" />
+                <span className="hidden sm:inline whitespace-nowrap">YouTube</span>
+              </a>
+
+              {/* Instagram Account Link */}
+              <a
+                id="header-instagram-btn"
+                href="https://www.instagram.com/upsc_therapy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="instagram-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-pink-600/15 hover:bg-pink-600/25 border border-pink-500/40 text-pink-400 hover:text-pink-300 text-xs font-semibold tracking-wide transition shadow-sm group"
+                title="Instagram: @upsc_therapy"
+                aria-label="Instagram Account"
+              >
+                <Instagram className="w-3.5 h-3.5 text-pink-400 group-hover:scale-110 transition-transform shrink-0" />
+                <span className="hidden sm:inline whitespace-nowrap">Instagram</span>
+              </a>
+
               {/* Language Switcher */}
               <button
                 id="lang-toggle-header"
                 onClick={() => setLanguage(language === 'hi' ? 'en' : 'hi')}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold tracking-wide transition shadow-sm"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold tracking-wide transition shadow-sm"
                 title="Switch Language / भाषा बदलें"
               >
                 <Globe className="w-3.5 h-3.5 shrink-0" />
@@ -103,7 +131,7 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="print-action-btn"
                 onClick={onPrint}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 text-xs font-bold transition shadow-md hover:shadow-amber-500/20 active:scale-95"
+                className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 text-xs font-bold transition shadow-md hover:shadow-amber-500/20 active:scale-95"
                 title="Save as PDF / प्रिंट करें"
               >
                 <Printer className="w-3.5 h-3.5 text-slate-950 shrink-0" />
@@ -115,27 +143,53 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Tab Navigation Menu */}
-        <nav className="mt-3 flex space-x-1.5 overflow-x-auto pb-1.5 scrollbar-thin">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                id={`tab-btn-${tab.id}`}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md whitespace-nowrap transition-all ${
-                  isActive
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20'
-                    : 'bg-[#0f2744]/70 text-slate-300 hover:text-white hover:bg-[#133157] border border-slate-700/50'
-                }`}
-              >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-slate-950' : 'text-amber-400'}`} />
-                <span>{language === 'hi' ? tab.label.hi : tab.label.en}</span>
-              </button>
-            );
-          })}
+        {/* Tab Navigation Menu & Mobile Quick Links */}
+        <nav className="mt-3 flex items-center justify-between gap-2 overflow-x-auto pb-1.5 scrollbar-thin">
+          <div className="flex space-x-1.5 shrink-0">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  id={`tab-btn-${tab.id}`}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md whitespace-nowrap transition-all ${
+                    isActive
+                      ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20'
+                      : 'bg-[#0f2744]/70 text-slate-300 hover:text-white hover:bg-[#133157] border border-slate-700/50'
+                  }`}
+                >
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <span>{language === 'hi' ? tab.label.hi : tab.label.en}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Mobile & Small Screen Quick Social Connect */}
+          <div className="flex sm:hidden items-center gap-1.5 shrink-0 pl-2 border-l border-slate-700/60">
+            <a
+              href="https://www.youtube.com/c/1dayers"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="youtube-btn flex items-center justify-center w-7 h-7 rounded-md bg-red-600/20 border border-red-500/40 text-red-400 hover:text-red-300"
+              title="YouTube (@1dayers)"
+              aria-label="YouTube Channel"
+            >
+              <Youtube className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://www.instagram.com/upsc_therapy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="instagram-btn flex items-center justify-center w-7 h-7 rounded-md bg-pink-600/20 border border-pink-500/40 text-pink-400 hover:text-pink-300"
+              title="Instagram (@upsc_therapy)"
+              aria-label="Instagram Account"
+            >
+              <Instagram className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </nav>
       </div>
     </header>

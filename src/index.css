@@ -91,6 +91,12 @@
     display: none !important;
   }
 
+  /* Social Interaction Buttons Hidden During Print Layouts */
+  .youtube-btn,
+  .instagram-btn {
+    display: none !important;
+  }
+
   /* Force the browser to render the deep navy backgrounds and gold colors */
   body, html, .master-container {
     background-color: #0a192f !important;

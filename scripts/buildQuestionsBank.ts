@@ -184,7 +184,7 @@ export function buildQuestions182(): MCQQuestion[] {
       q_hi: 'केंद्र में द्विसदनीय विधायिका (Bicameral Legislature at the Centre) पहली बार किस अधिनियम द्वारा स्थापित की गई?',
       q_en: 'A bicameral legislature at the Centre was introduced for the first time by:',
       a_hi: '1861 का परिषद अधिनियम', a_en: 'Indian Councils Act 1861',
-      b_hi: '1892 का परिषद अधिनियम', a_en: 'Indian Councils Act 1892',
+      b_hi: '1892 का परिषद अधिनियम', b_en: 'Indian Councils Act 1892',
       c_hi: '1919 का भारत शासन अधिनियम', c_en: 'Government of India Act 1919',
       d_hi: '1935 का भारत शासन अधिनियम', d_en: 'Government of India Act 1935',
       ans: 'c',
@@ -755,7 +755,7 @@ export function buildQuestions182(): MCQQuestion[] {
       a_hi: 'उपराष्ट्रपति', a_en: 'Vice President',
       b_hi: 'महान्यायवादी (Attorney General)', b_en: 'Attorney General of India',
       c_hi: 'नियंत्रक एवं महालेखा परीक्षक (CAG)', c_en: 'Comptroller and Auditor General',
-      d_hi: 'मुख्य चुनाव आयुक्त', c_en: 'Chief Election Commissioner',
+      d_hi: 'मुख्य चुनाव आयुक्त', d_en: 'Chief Election Commissioner',
       ans: 'b',
       exp_hi: 'अनुच्छेद 88 के तहत महान्यायवादी को संसद के सदनों में बोलने व भाग लेने का अधिकार है, परंतु मतदान (Vote) का अधिकार नहीं है।',
       exp_en: 'Article 88 confers right to speak in either House on Attorney General, but without right to vote.'
