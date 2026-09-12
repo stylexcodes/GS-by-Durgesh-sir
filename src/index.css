@@ -435,6 +435,27 @@
     font-weight: 700 !important;
   }
 }
+/* Ultimate Print Override to remove the Index Page from downloaded PDFs */
+@media print {
+    table:first-of-type,
+    .index-table,
+    .master-index,
+    #index-section,
+    .table-of-contents,
+    #toc,
+    section.avoid-break:first-of-type,
+    div[class*="index"],
+    div[id*="index"] {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
+
 
 /* Ultimate Print Override to remove the Index from PDFs */
 @media print {
