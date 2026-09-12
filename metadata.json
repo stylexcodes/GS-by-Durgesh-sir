@@ -1,0 +1,6 @@
+{
+  "name": "UPSI Polity Compendium (भारतीय संविधान एवं राजव्यवस्था)",
+  "description": "Complete Bilingual (Hindi & English) Study Portal and Practice Question Bank for UPSI Indian Constitution & Polity, based on 228 pages of Er. Maroof Sir's curriculum.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Outfit', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #0a192f;
+    color: #f1f5f9;
+  }
+
+  h1, h2, h3, .font-serif-heading {
+    font-family: 'Cinzel', 'Noto Sans Devanagari', serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a192f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e3a5f;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
+
+/* Print Optimization Rule for PDF Export */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    font-family: 'Noto Sans Devanagari', Arial, sans-serif !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Hide screen-only interactive shell */
+  .no-print,
+  nav,
+  aside,
+  header,
+  .print-hide,
+  button,
+  .floating-tools,
+  .quiz-controls {
+    display: none !important;
+  }
+
+  /* Full width container for printed sheets */
+  .printable-content,
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+  }
+
+  .print-card {
+    border: 1px solid #e2e8f0 !important;
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 1.5rem !important;
+    padding: 1rem !important;
+  }
+
+  .print-header {
+    display: block !important;
+    border-bottom: 2px solid #0f172a !important;
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  .text-amber-400,
+  .text-amber-500,
+  .text-yellow-400 {
+    color: #b45309 !important;
+    font-weight: 700 !important;
+  }
+
+  .bg-[#0a192f],
+  .bg-[#112240],
+  .bg-[#1e3a5f] {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .text-slate-300,
+  .text-slate-400 {
+    color: #334155 !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: #1d4ed8 !important;
+  }
+}
