@@ -380,14 +380,14 @@ export const CHAPTERS_INDEX: ChapterMeta[] = [
     id: 'polity-terminology',
     number: 26,
     title: {
-      hi: 'राजव्यवस्था सम्बन्धी प्रमुख शब्दावलियाँ',
+      hi: 'राज्यव्यवस्था सम्बन्धी प्रमुख शब्दावलियां',
       en: 'Key Political Science Terminology & Acts'
     },
     pageRange: '210 - 212',
     iconName: 'BookMarked',
     category: 'special',
     description: {
-      hi: 'अराजकतावाद, लोकतंत्र, फांसीवाद, नाजीवाद, बफर स्टेट, ब्रेन ड्रेन, व्हिप, गिलोटिन आदि 40+ शब्दावलियां एवं अनुचित साधन रोकथाम अधिनियम 2024',
+      hi: 'अराजकतावाद, लोकतंत्र, फासीवाद, नाजीवाद, बफर स्टेट, ब्रेन ड्रेन, व्हिप, गिलोटिन आदि 40+ शब्दावलियां एवं अनुचित साधन रोकथाम अधिनियम 2024',
       en: '40+ Core political concepts: Anarchy, Fascism, Buffer State, Brain Drain, Whip, Guillotine, and Anti-Cheating Act 2024'
     }
   },

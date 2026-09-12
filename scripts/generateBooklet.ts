@@ -53,8 +53,37 @@ export function generateBookletHtml(): string {
       print-color-adjust: exact !important;
     }
 
+    /* WATERMARK ON EVERY PAGE - GS By Durgesh Pandey Sir */
+    .print-watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 46pt;
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      color: rgba(251, 191, 36, 0.07);
+      text-shadow: 0 0 1px rgba(255, 255, 255, 0.05);
+      text-align: center;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 99999;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      user-select: none;
+    }
+
     body {
       background-color: #0a192f;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='550' height='380' viewBox='0 0 550 380'><text x='50%' y='50%' fill='rgba(251,191,36,0.05)' font-family='Cinzel, serif' font-size='22' font-weight='800' transform='rotate(-28 275 190)' text-anchor='middle'>GS By Durgesh Pandey Sir</text></svg>");
+      background-repeat: repeat;
+      background-attachment: fixed;
       color: #ffffff;
       font-family: 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       font-size: 9.5pt;
@@ -395,6 +424,11 @@ export function generateBookletHtml(): string {
 </head>
 <body>
 
+<!-- WATERMARK ON EVERY PRINTED PAGE -->
+<div class="print-watermark" aria-hidden="true">
+  <span>GS By Durgesh Pandey Sir</span>
+</div>
+
 <div class="master-container booklet-container">
   <!-- PRINT / DOWNLOAD UTILITY TOOLBAR (Screen Only) -->
   <div class="utility-toolbar no-print action-buttons">
@@ -418,7 +452,7 @@ export function generateBookletHtml(): string {
       भारतीय संविधान एवं राजव्यवस्था • सम्पूर्ण प्रामाणिक पाठ्यक्रम
     </div>
     <p style="font-size: 8.5pt; color: #cbd5e1; max-width: 740px; margin: 10px auto 0 auto; line-height: 1.45;">
-      विशेष रूप से उत्तर प्रदेश उप-निरीक्षक (UPSI), यूपी पुलिस कांस्टेबल, SSC CGL/CPO, RO/ARO एवं राज्य लोक सेवा आयोग परीक्षाओं हेतु संकलित। इस प्रमाणित दस्तावेज में 23 अध्यायों की विषय सूची, सभी 395 अनुच्छेद (भाग 1 से 22), 1773 से 1947 तक 18 ऐतिहासिक अधिनियम, सभी 12 अनुसूचियां, केंद्र व राज्य के 30 तुलनात्मक मैजिक 89/90 जोड़े, सुप्रीम कोर्ट के 45 लैंडमार्क वाद, परीक्षा शब्दावली तथा 182 आधिकारिक विगत वर्ष प्रश्न (PYQ) विस्तृत द्विभाषी व्याख्या सहित पूर्ण रूप से शामिल हैं।
+      विशेष रूप से उत्तर प्रदेश उप-निरीक्षक (UPSI), यूपी पुलिस कांस्टेबल, SSC CGL/CPO, RO/ARO एवं राज्य लोक सेवा आयोग परीक्षाओं हेतु संकलित। इस प्रमाणित दस्तावेज में 27 अध्यायों की आधिकारिक विषय सूची (अध्याय 1 से 27 सम्पूर्ण • पृष्ठ 2 से 228), सभी 395 अनुच्छेद (भाग 1 से 22), 1773 से 1947 तक 18 ऐतिहासिक अधिनियम, सभी 12 अनुसूचियां, केंद्र व राज्य के 30 तुलनात्मक मैजिक 89/90 जोड़े, सुप्रीम कोर्ट के 45 लैंडमार्क वाद, परीक्षा शब्दावली तथा 182 आधिकारिक विगत वर्ष प्रश्न (PYQ) विस्तृत द्विभाषी व्याख्या सहित पूर्ण रूप से शामिल हैं।
     </p>
     <div style="display: flex; justify-content: center; gap: 12px; margin-top: 12px; font-size: 8.5pt; font-weight: bold; color: #fbbf24; flex-wrap: wrap;">
       <span>📖 395+ अनुच्छेद (भाग 1-22)</span> •
@@ -431,11 +465,11 @@ export function generateBookletHtml(): string {
     </div>
   </header>
 
-  <!-- SECTION 1: MASTER TABLE OF CONTENTS (23 CHAPTERS) -->
+  <!-- SECTION 1: MASTER TABLE OF CONTENTS (27 CHAPTERS • COMPLETE INDEX) -->
   <section class="avoid-break" style="margin-bottom: 24px;">
     <div class="section-banner">
       <span>1. अध्याय अनुक्रमणिका एवं पृष्ठ विवरण (Master Table of Contents)</span>
-      <span style="font-size: 8.5pt;">23 Complete Chapters</span>
+      <span style="font-size: 8.5pt;">27 Chapters Complete • पृष्ठ 2 से 228</span>
     </div>
     <table>
       <thead>

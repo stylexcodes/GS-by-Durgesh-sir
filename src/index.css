@@ -176,6 +176,32 @@
     box-sizing: border-box !important;
   }
 
+  /* WATERMARK ON EVERY PAGE - GS By Durgesh Pandey Sir */
+  .print-watermark {
+    display: flex !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotate(-32deg) !important;
+    font-size: 46pt !important;
+    font-family: 'Cinzel', serif !important;
+    font-weight: 900 !important;
+    color: rgba(251, 191, 36, 0.075) !important;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.05) !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    pointer-events: none !important;
+    z-index: 99999 !important;
+    width: 100vw !important;
+    align-items: center !important;
+    justify-content: center !important;
+    letter-spacing: 5px !important;
+    text-transform: uppercase !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    user-select: none !important;
+  }
+
   .print-running-footer {
     display: flex !important;
     position: fixed !important;
@@ -242,7 +268,8 @@
   .print-compendium-wrapper,
   .print-only-compendium,
   .print-running-header,
-  .print-running-footer {
+  .print-running-footer,
+  .print-watermark {
     display: none !important;
   }
 }

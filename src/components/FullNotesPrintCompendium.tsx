@@ -36,6 +36,11 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
 
   return (
     <div id="full-notes-print-compendium" className="print-only-compendium master-container bg-[#0a192f] text-white font-sans leading-relaxed">
+      {/* WATERMARK ON EVERY PAGE - GS By Durgesh Pandey Sir */}
+      <div className="print-watermark" aria-hidden="true">
+        <span>GS By Durgesh Pandey Sir</span>
+      </div>
+
       {/* Running Header for every printed page */}
       <div className="print-running-header" aria-hidden="true">
         <span className="print-running-title font-bold text-amber-400">
@@ -82,38 +87,54 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
         </div>
       </div>
 
-      {/* SECTION 1: MASTER TABLE OF CONTENTS */}
+      {/* SECTION 1: MASTER TABLE OF CONTENTS (27 CHAPTERS • COMPLETE INDEX) */}
       <section className="print-section mb-10 print-page-break-before">
-        <div className="print-section-header border-b-2 border-amber-500 pb-2 mb-4">
-          <h2 className="text-xl font-bold uppercase tracking-wide text-amber-400 flex justify-between items-baseline">
-            <span>अध्याय अनुक्रमणिका एवं पृष्ठ विवरण (Table of Contents)</span>
-            <span className="text-xs font-normal text-slate-300">Master Index Complete</span>
+        <div className="print-section-header border-b-2 border-amber-500 pb-2 mb-4 flex justify-between items-baseline">
+          <h2 className="text-xl font-bold uppercase tracking-wide text-amber-400">
+            अध्याय अनुक्रमणिका एवं पृष्ठ विवरण (Table of Contents)
           </h2>
+          <span className="text-xs font-bold text-amber-300">
+            27 Chapters Complete • पृष्ठ 2 से 228
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-          {CHAPTERS_INDEX.map((ch, idx) => {
-            const chNum = ch.chapterNumber || ch.number || idx + 1;
-            return (
-              <div
-                key={ch.id || idx}
-                className="print-page-avoid-break border border-gray-400 p-2.5 rounded bg-white"
-              >
-                <div className="flex justify-between items-start font-bold text-black pb-1 border-b border-gray-200">
-                  <span>अध्याय {chNum}: {ch.title.hi}</span>
-                  <span className="bg-gray-100 px-1.5 py-0.5 rounded text-[11px] font-mono shrink-0 ml-2">
-                    पृष्ठ {ch.pageRange}
-                  </span>
-                </div>
-                <div className="text-[11px] text-gray-700 font-medium mt-1">
-                  {ch.title.en}
-                </div>
-                <div className="text-[10px] text-gray-600 mt-1 leading-tight">
-                  {ch.description.hi}
-                </div>
-              </div>
-            );
-          })}
+        <div className="overflow-x-auto print-page-avoid-break">
+          <table className="w-full text-left border-collapse border border-[#1e3a5f] text-xs">
+            <thead>
+              <tr className="bg-[#0f2744] text-amber-400 border-b border-[#1e3a5f]">
+                <th className="p-2 text-center border-r border-[#1e3a5f] w-12 font-bold">क्र.सं.</th>
+                <th className="p-2 border-r border-[#1e3a5f] w-1/4 font-bold">अध्याय का नाम (Chapter Title)</th>
+                <th className="p-2 border-r border-[#1e3a5f] font-bold">विस्तृत विषय-वस्तु (Coverage & Key Topics)</th>
+                <th className="p-2 text-center w-24 font-bold">पृष्ठ संख्या</th>
+              </tr>
+            </thead>
+            <tbody>
+              {CHAPTERS_INDEX.map((ch, idx) => {
+                const chNum = ch.chapterNumber || ch.number || idx + 1;
+                const isEven = idx % 2 === 0;
+                return (
+                  <tr
+                    key={ch.id || idx}
+                    className={`border-b border-[#1e3a5f] ${isEven ? 'bg-[#0a192f]' : 'bg-[#0e213d]'}`}
+                  >
+                    <td className="p-2 text-center font-bold text-amber-400 border-r border-[#1e3a5f] align-top">
+                      {chNum}
+                    </td>
+                    <td className="p-2 border-r border-[#1e3a5f] align-top">
+                      <div className="font-bold text-white text-[13px]">{ch.title.hi}</div>
+                      <div className="text-[11px] text-slate-300 font-medium">{ch.title.en}</div>
+                    </td>
+                    <td className="p-2 border-r border-[#1e3a5f] text-slate-200 text-[11.5px] leading-relaxed align-top">
+                      {ch.description.hi}
+                    </td>
+                    <td className="p-2 text-center font-mono font-bold text-amber-300 border-r-0 align-top whitespace-nowrap text-[12px]">
+                      {ch.pageRange}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </section>
 
