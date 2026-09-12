@@ -435,3 +435,27 @@
     font-weight: 700 !important;
   }
 }
+
+/* Ultimate Print Override to remove the Index from PDFs */
+@media print {
+    .master-index,
+    #master-index,
+    .index-container,
+    .table-of-contents,
+    #toc,
+    [class*="index"],
+    [id*="index"],
+    table,
+    .grid-container:first-of-type,
+    div[style*="grid"],
+    main > div:first-child {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
+
