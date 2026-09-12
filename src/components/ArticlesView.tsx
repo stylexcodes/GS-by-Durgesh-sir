@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { ConstitutionalArticle, Language } from '../types';
-import { Star, ChevronDown, ChevronUp, Bookmark, Filter } from 'lucide-react';
+import { Star, ChevronDown, ChevronUp, Bookmark, Filter, Loader2, Sparkles } from 'lucide-react';
 
 interface ArticlesViewProps {
   articles: ConstitutionalArticle[];
@@ -12,6 +12,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
   const [selectedPart, setSelectedPart] = useState<string>('all');
   const [onlyImportant, setOnlyImportant] = useState<boolean>(false);
   const [expandedArticles, setExpandedArticles] = useState<Record<string, boolean>>({});
+  const [explanations, setExplanations] = useState<Record<string, { loading: boolean; text?: string; error?: string }>>({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 20;
 
@@ -31,9 +32,19 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
       if (onlyImportant && !art.isImportant) return false;
 
       if (!searchQuery) return true;
+      
       const q = searchQuery.toLowerCase().trim();
       const artNum = (art.articleNumber || art.number || '').toLowerCase();
-      const matchNumber = artNum.includes(q);
+      
+      // Detect explicit article search (e.g., "Article 1", "art 1", "अनुच्छेद 1")
+      const exactArticleMatch = q.match(/^(article|art\.?|अनुच्छेद)\s*([0-9]+[a-z]?)$/i);
+      const targetArticleNum = exactArticleMatch ? exactArticleMatch[2].toLowerCase() : null;
+
+      if (targetArticleNum) {
+        return artNum === targetArticleNum;
+      }
+
+      const matchNumber = artNum === q || artNum.includes(q);
       const matchTitleHi = art.title.hi.toLowerCase().includes(q);
       const matchTitleEn = art.title.en.toLowerCase().includes(q);
       const bodyHi = (art.content?.hi || art.description?.hi || '').toLowerCase();
@@ -52,11 +63,36 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
 
   const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
 
-  const toggleExpand = (id: string) => {
-    setExpandedArticles((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+  const fetchExplanation = async (articleId: string, articleNumber: string, articleTitle: string) => {
+    const key = `${articleId}-${language}`;
+    if (explanations[key]?.text || explanations[key]?.loading) return;
+
+    setExplanations(prev => ({ ...prev, [key]: { loading: true } }));
+    try {
+      const response = await fetch('/api/explain', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ articleNumber, articleTitle, language })
+      });
+      const data = await response.json();
+      if (data.explanation) {
+        setExplanations(prev => ({ ...prev, [key]: { loading: false, text: data.explanation } }));
+      } else {
+        setExplanations(prev => ({ ...prev, [key]: { loading: false, error: 'Failed to generate explanation.' } }));
+      }
+    } catch (error) {
+      setExplanations(prev => ({ ...prev, [key]: { loading: false, error: 'An error occurred while fetching the explanation.' } }));
+    }
+  };
+
+  const toggleExpand = (id: string, artNum: string, artTitle: string) => {
+    setExpandedArticles((prev) => {
+      const isNowExpanded = !prev[id];
+      if (isNowExpanded) {
+        fetchExplanation(id, artNum, artTitle);
+      }
+      return { ...prev, [id]: isNowExpanded };
+    });
   };
 
   return (
@@ -171,11 +207,39 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
 
                   {/* Expanded Full Content - Forced visible in print mode */}
                   <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block mt-3 pt-3 border-t border-slate-300/60 print:border-gray-300 space-y-2.5 text-xs`}>
-                    <div className="bg-[#f8fafc] print:bg-gray-50 p-3 rounded-lg border border-slate-200 print:border-gray-300">
-                      <span className="font-semibold text-blue-900 print:text-black text-[11px] block mb-1">
-                        {language === 'hi' ? 'विस्तृत विवरण:' : 'Full Legal Text:'}
-                      </span>
-                      <p className="text-slate-800 print:text-black leading-relaxed">{language === 'hi' ? desc.hi : desc.en}</p>
+                    
+                    {/* AI Expert Explanation Section */}
+                    <div className="bg-blue-50/50 print:bg-gray-50 p-4 rounded-lg border border-blue-100 print:border-gray-300 relative overflow-hidden">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Sparkles className="w-4 h-4 text-amber-500" />
+                        <span className="font-bold text-blue-900 print:text-black text-xs uppercase tracking-wider">
+                          {language === 'hi' ? 'विशेषज्ञ व्याख्या एवं नोट्स:' : 'Expert Explanation & Notes:'}
+                        </span>
+                      </div>
+                      
+                      {(() => {
+                        const expKey = `${cardId}-${language}`;
+                        const expState = explanations[expKey];
+                        
+                        if (expState?.loading) {
+                          return (
+                            <div className="flex items-center gap-2 text-slate-500 py-2">
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                              <span>{language === 'hi' ? 'विस्तृत व्याख्या तैयार की जा रही है...' : 'Generating detailed explanation...'}</span>
+                            </div>
+                          );
+                        }
+                        
+                        if (expState?.error) {
+                          return <div className="text-red-500">{expState.error}</div>;
+                        }
+                        
+                        if (expState?.text) {
+                          return <div className="text-slate-700 print:text-black leading-relaxed space-y-2 whitespace-pre-wrap">{expState.text}</div>;
+                        }
+                        
+                        return null;
+                      })()}
                     </div>
 
                     {art.clauseDetails && art.clauseDetails.length > 0 && (
@@ -199,7 +263,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                     {language === 'hi' ? 'मूल पाठ एवं अनुवाद' : 'Full Text & Notes'}
                   </span>
                   <button
-                    onClick={() => toggleExpand(cardId)}
+                    onClick={() => toggleExpand(cardId, artNum, language === 'hi' ? art.title.hi : art.title.en)}
                     className="text-blue-900 hover:text-blue-900 flex items-center gap-1 font-medium transition"
                   >
                     <span>
