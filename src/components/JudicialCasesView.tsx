@@ -96,37 +96,35 @@ export const JudicialCasesView: React.FC<JudicialCasesViewProps> = ({ cases, lan
                 </div>
               </div>
 
-              {/* Ruling Details */}
-              {isExpanded && (
-                <div className="p-5 bg-[#0a192f]/60 space-y-3 text-xs">
-                  <div className="bg-[#0a192f] p-3.5 rounded-lg border border-slate-800 space-y-1">
-                    <span className="font-bold text-amber-400 block">
-                      {language === 'hi' ? 'अदालत का ऐतिहासिक फैसला एवं सिद्धांत (हिन्दी):' : 'Supreme Court Ruling & Legal Principle:'}
-                    </span>
-                    <p className="text-slate-200 leading-relaxed">{cs.rulingSummary.hi}</p>
-                  </div>
-
-                  <div className="bg-[#0a192f] p-3 rounded-lg border border-slate-800 space-y-1">
-                    <span className="font-bold text-sky-400 block">English Summary & Context:</span>
-                    <p className="text-slate-300 leading-relaxed font-sans">{cs.rulingSummary.en}</p>
-                  </div>
-
-                  {/* Constitutional Articles Linked */}
-                  <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-800">
-                    <span className="text-[11px] font-semibold text-slate-400">
-                      {language === 'hi' ? 'संबंधित अनुच्छेद:' : 'Related Articles:'}
-                    </span>
-                    {cs.constitutionalArticles.map((art, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-mono"
-                      >
-                        {art}
-                      </span>
-                    ))}
-                  </div>
+              {/* Ruling Details - forced visible in print */}
+              <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block p-5 bg-[#0a192f]/60 print:bg-white space-y-3 text-xs`}>
+                <div className="bg-[#0a192f] print:bg-gray-50 p-3.5 rounded-lg border border-slate-800 print:border-gray-300 space-y-1">
+                  <span className="font-bold text-amber-400 print:text-black block">
+                    {language === 'hi' ? 'अदालत का ऐतिहासिक फैसला एवं सिद्धांत (हिन्दी):' : 'Supreme Court Ruling & Legal Principle:'}
+                  </span>
+                  <p className="text-slate-200 print:text-black leading-relaxed">{cs.rulingSummary.hi}</p>
                 </div>
-              )}
+
+                <div className="bg-[#0a192f] print:bg-gray-50 p-3 rounded-lg border border-slate-800 print:border-gray-300 space-y-1">
+                  <span className="font-bold text-sky-400 print:text-gray-700 block">English Summary & Context:</span>
+                  <p className="text-slate-300 print:text-gray-800 leading-relaxed font-sans">{cs.rulingSummary.en}</p>
+                </div>
+
+                {/* Constitutional Articles Linked */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-800 print:border-gray-300">
+                  <span className="text-[11px] font-semibold text-slate-400 print:text-gray-700">
+                    {language === 'hi' ? 'संबंधित अनुच्छेद:' : 'Related Articles:'}
+                  </span>
+                  {cs.constitutionalArticles.map((art, idx) => (
+                    <span
+                      key={idx}
+                      className="px-2 py-0.5 rounded bg-amber-500/10 print:bg-gray-100 border border-amber-500/30 print:border-black text-amber-300 print:text-black text-[11px] font-mono"
+                    >
+                      {art}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           );
         })}

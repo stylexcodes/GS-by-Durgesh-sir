@@ -16,13 +16,13 @@ export const ChaptersIndexView: React.FC<ChaptersIndexViewProps> = ({ chapters, 
         <h2 className="text-lg font-bold text-white font-cinzel flex items-center gap-2">
           <BookOpen className="w-5 h-5 text-amber-400" />
           {language === 'hi'
-            ? 'UPSI संविधान एवं राजव्यवस्था संपूर्ण 228 पृष्ठों की विषय-सूची (Table of Contents)'
-            : 'Complete 228-Page Master Table of Contents'}
+            ? 'UPSI संविधान एवं राजव्यवस्था संपूर्ण विषय-सूची (Table of Contents)'
+            : 'Complete Master Table of Contents'}
         </h2>
         <p className="text-xs text-slate-300 mt-1 leading-relaxed">
           {language === 'hi'
             ? 'पीडीएफ के सभी 23 अध्यायों का प्रामाणिक पृष्ठ-वार संकलन। किसी भी अध्याय का विवरण देखें या सीधे अध्ययन खंड में जाएं।'
-            : 'Authentic page-by-page index of all 23 comprehensive chapters from the 228-page PDF compendium.'}
+            : 'Authentic page-by-page index of all 23 comprehensive chapters from the complete PDF compendium.'}
         </p>
       </div>
 

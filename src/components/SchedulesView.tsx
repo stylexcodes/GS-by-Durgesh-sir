@@ -75,58 +75,56 @@ export const SchedulesView: React.FC<SchedulesViewProps> = ({ schedules, languag
                 </div>
               </div>
 
-              {/* Details Drawer */}
-              {isExpanded && (
-                <div className="p-5 bg-[#0a192f]/60 space-y-4">
-                  <div className="text-xs text-slate-200 leading-relaxed bg-[#0a192f] p-3 rounded-lg border border-slate-800">
-                    <span className="font-bold text-amber-400 block mb-1">
-                      {language === 'hi' ? 'अनुसूची का सार:' : 'Schedule Summary:'}
-                    </span>
-                    <p>{language === 'hi' ? sch.description.hi : sch.description.en}</p>
-                  </div>
+              {/* Details Drawer - forced visible in print */}
+              <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block p-5 bg-[#0a192f]/60 print:bg-white space-y-4`}>
+                <div className="text-xs text-slate-200 print:text-black leading-relaxed bg-[#0a192f] print:bg-gray-50 p-3 rounded-lg border border-slate-800 print:border-gray-300">
+                  <span className="font-bold text-amber-400 print:text-black block mb-1">
+                    {language === 'hi' ? 'अनुसूची का सार:' : 'Schedule Summary:'}
+                  </span>
+                  <p>{language === 'hi' ? sch.description.hi : sch.description.en}</p>
+                </div>
 
-                  {sch.details && sch.details.length > 0 && (
-                    <div className="space-y-2">
-                      <span className="text-xs font-bold text-amber-300 uppercase tracking-wider block">
-                        {language === 'hi' ? 'महत्वपूर्ण संवैधानिक बिंदु एवं आंकड़े:' : 'Constitutional Details & Data:'}
-                      </span>
-                      <div className="grid grid-cols-1 gap-2">
-                        {sch.details.map((detail, idx) => (
-                          <div
-                            key={idx}
-                            className="bg-[#11243e] p-3 rounded-lg border border-slate-800 flex items-start gap-2.5 text-xs text-slate-200"
-                          >
-                            <CheckCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                            <div className="space-y-1">
-                              <div>{language === 'hi' ? detail.hi : detail.en}</div>
-                              <div className="text-[11px] text-slate-400 font-sans border-t border-slate-800/80 pt-1">
-                                {language === 'hi' ? detail.en : detail.hi}
-                              </div>
+                {sch.details && sch.details.length > 0 && (
+                  <div className="space-y-2">
+                    <span className="text-xs font-bold text-amber-300 print:text-black uppercase tracking-wider block">
+                      {language === 'hi' ? 'महत्वपूर्ण संवैधानिक बिंदु एवं आंकड़े:' : 'Constitutional Details & Data:'}
+                    </span>
+                    <div className="grid grid-cols-1 gap-2">
+                      {sch.details.map((detail, idx) => (
+                        <div
+                          key={idx}
+                          className="bg-[#11243e] print:bg-gray-50 p-3 rounded-lg border border-slate-800 print:border-gray-300 flex items-start gap-2.5 text-xs text-slate-200 print:text-black"
+                        >
+                          <CheckCircle className="w-4 h-4 text-amber-400 print:text-black shrink-0 mt-0.5 no-print" />
+                          <div className="space-y-1">
+                            <div>{language === 'hi' ? detail.hi : detail.en}</div>
+                            <div className="text-[11px] text-slate-400 print:text-gray-700 font-sans border-t border-slate-800/80 print:border-gray-300 pt-1">
+                              {language === 'hi' ? detail.en : detail.hi}
                             </div>
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Related Articles */}
-                  {sch.relatedArticles && sch.relatedArticles.length > 0 && (
-                    <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800">
-                      <span className="text-[11px] font-semibold text-slate-400">
-                        {language === 'hi' ? 'संबंधित अनुच्छेद:' : 'Related Articles:'}
-                      </span>
-                      {sch.relatedArticles.map((art, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-mono"
-                        >
-                          {art}
-                        </span>
+                        </div>
                       ))}
                     </div>
-                  )}
-                </div>
-              )}
+                  </div>
+                )}
+
+                {/* Related Articles */}
+                {sch.relatedArticles && sch.relatedArticles.length > 0 && (
+                  <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800 print:border-gray-300">
+                    <span className="text-[11px] font-semibold text-slate-400 print:text-gray-700">
+                      {language === 'hi' ? 'संबंधित अनुच्छेद:' : 'Related Articles:'}
+                    </span>
+                    {sch.relatedArticles.map((art, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 rounded bg-amber-500/10 print:bg-gray-100 border border-amber-500/30 print:border-black text-amber-300 print:text-black text-[11px] font-mono"
+                      >
+                        {art}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           );
         })}

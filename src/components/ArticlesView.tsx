@@ -165,45 +165,43 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                   </div>
 
                   {/* Content Preview */}
-                  <p className="text-xs text-slate-300 leading-relaxed mt-2 line-clamp-3">
+                  <p className="text-xs text-slate-300 leading-relaxed mt-2 line-clamp-3 print:line-clamp-none print:text-black">
                     {language === 'hi' ? desc.hi : desc.en}
                   </p>
 
-                  {/* Expanded Full Content */}
-                  {isExpanded && (
-                    <div className="mt-3 pt-3 border-t border-slate-700/60 space-y-2.5 text-xs">
-                      <div className="bg-[#0a192f] p-3 rounded-lg border border-slate-800">
-                        <span className="font-semibold text-amber-400 text-[11px] block mb-1">
-                          {language === 'hi' ? 'विस्तृत विवरण (हिन्दी):' : 'Full Hindi Legal Text:'}
-                        </span>
-                        <p className="text-slate-200 leading-relaxed">{desc.hi}</p>
-                      </div>
-
-                      <div className="bg-[#0a192f] p-3 rounded-lg border border-slate-800">
-                        <span className="font-semibold text-sky-400 text-[11px] block mb-1">
-                          English Translation & Reference:
-                        </span>
-                        <p className="text-slate-300 leading-relaxed font-sans">{desc.en}</p>
-                      </div>
-
-                      {art.clauseDetails && art.clauseDetails.length > 0 && (
-                        <div className="mt-2 space-y-1">
-                          <span className="font-semibold text-amber-300 text-[11px] block">
-                            {language === 'hi' ? 'प्रमुख उप-खंड:' : 'Key Clauses:'}
-                          </span>
-                          {art.clauseDetails.map((clause, idx) => (
-                            <div key={idx} className="text-[11px] text-slate-300 pl-2 border-l-2 border-amber-500/40 py-0.5">
-                              {language === 'hi' ? clause.hi : clause.en}
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                  {/* Expanded Full Content - Forced visible in print mode */}
+                  <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block mt-3 pt-3 border-t border-slate-700/60 print:border-gray-300 space-y-2.5 text-xs`}>
+                    <div className="bg-[#0a192f] print:bg-gray-50 p-3 rounded-lg border border-slate-800 print:border-gray-300">
+                      <span className="font-semibold text-amber-400 print:text-black text-[11px] block mb-1">
+                        {language === 'hi' ? 'विस्तृत विवरण (हिन्दी):' : 'Full Hindi Legal Text:'}
+                      </span>
+                      <p className="text-slate-200 print:text-black leading-relaxed">{desc.hi}</p>
                     </div>
-                  )}
+
+                    <div className="bg-[#0a192f] print:bg-gray-50 p-3 rounded-lg border border-slate-800 print:border-gray-300">
+                      <span className="font-semibold text-sky-400 print:text-gray-700 text-[11px] block mb-1">
+                        English Translation & Reference:
+                      </span>
+                      <p className="text-slate-300 print:text-gray-800 leading-relaxed font-sans">{desc.en}</p>
+                    </div>
+
+                    {art.clauseDetails && art.clauseDetails.length > 0 && (
+                      <div className="mt-2 space-y-1">
+                        <span className="font-semibold text-amber-300 print:text-black text-[11px] block">
+                          {language === 'hi' ? 'प्रमुख उप-खंड:' : 'Key Clauses:'}
+                        </span>
+                        {art.clauseDetails.map((clause, idx) => (
+                          <div key={idx} className="text-[11px] text-slate-300 print:text-black pl-2 border-l-2 border-amber-500/40 print:border-black py-0.5">
+                            {language === 'hi' ? clause.hi : clause.en}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Footer action toggle */}
-                <div className="px-4 py-2 bg-[#0a192f]/60 rounded-b-xl border-t border-slate-800 flex items-center justify-between text-xs">
+                <div className="px-4 py-2 bg-[#0a192f]/60 rounded-b-xl border-t border-slate-800 flex items-center justify-between text-xs no-print">
                   <span className="text-[11px] text-slate-400">
                     {language === 'hi' ? 'मूल पाठ एवं अनुवाद' : 'Full Text & Notes'}
                   </span>

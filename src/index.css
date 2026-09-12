@@ -31,77 +31,219 @@
   background: #d97706;
 }
 
-/* Print Optimization Rule for PDF Export */
+/* Dynamic print preparation helper classes */
+.forced-print-expanded {
+  display: block !important;
+  height: auto !important;
+  max-height: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.unclamped-for-print {
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  display: block !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Zero-dependency layout override during print loop */
+.printing-active .accordion-content,
+.printing-active .notes-wrapper,
+.printing-active .panel-hidden {
+  display: block !important;
+  height: auto !important;
+  max-height: none !important;
+  visibility: visible !important;
+}
+
+/* =========================================================
+   EXPLICIT CSS PRINT COMMANDS: FORCE DYNAMIC PAGE EXPANSION
+   ========================================================= */
 @media print {
-  body {
-    background-color: #ffffff !important;
-    color: #111827 !important;
-    font-family: 'Noto Sans Devanagari', Arial, sans-serif !important;
-    font-size: 11pt !important;
-    line-height: 1.5 !important;
+  @page {
+    size: A4 portrait;
+    margin: 1cm 1cm 1cm 1cm;
   }
 
-  /* Hide screen-only interactive shell */
-  .no-print,
-  nav,
-  aside,
-  header,
-  .print-hide,
-  button,
-  .floating-tools,
-  .quiz-controls {
+  /* Force every accordion panel and notes container to be wide open */
+  .accordion-content, .notes-wrapper, .chapter-section, .quiz-questions {
+    display: block !important;
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+  
+  /* Also force all drawers, bodies and details open */
+  .accordion-body, .panel-hidden, [data-accordion-content], .answer-block, details > *:not(summary) {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+
+  /* Hide the web website UI elements so the PDF looks like a clean book */
+  navbar, .search-box-container, .floating-toggle-btn, .action-buttons, footer {
     display: none !important;
   }
 
-  /* Full width container for printed sheets */
-  .printable-content,
-  main {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    background: transparent !important;
+  /* Force the browser to render the deep navy backgrounds and gold colors */
+  body, html, .master-container {
+    background-color: #0a192f !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color: #ffffff !important;
   }
 
-  .print-card {
-    border: 1px solid #e2e8f0 !important;
-    background-color: #ffffff !important;
-    color: #0f172a !important;
-    box-shadow: none !important;
-    page-break-inside: avoid !important;
-    margin-bottom: 1.5rem !important;
-    padding: 1rem !important;
+  /* 2. STRIP WEB UI SHELL ELEMENTS */
+  header,
+  nav,
+  aside,
+  footer,
+  #search-input,
+  .search-input-wrapper,
+  .header-controls-row,
+  .header-actions-group,
+  #lang-toggle-header,
+  #print-action-btn,
+  #floating-actions-container,
+  .floating-actions,
+  .floating-btn,
+  .metric-cards-strip,
+  .screen-interactive-shell,
+  .no-print,
+  button,
+  select,
+  input,
+  .quiz-controls,
+  .interactive-scorecard {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
   }
 
-  .print-header {
+  /* 3. SHOW AND EXPAND COMPLETE PRINT COMPENDIUM */
+  .print-compendium-wrapper,
+  .print-only-compendium {
     display: block !important;
-    border-bottom: 2px solid #0f172a !important;
-    margin-bottom: 1.5rem !important;
-    padding-bottom: 0.75rem !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    background-color: #0a192f !important;
+    color: #ffffff !important;
   }
 
-  .text-amber-400,
-  .text-amber-500,
-  .text-yellow-400 {
-    color: #b45309 !important;
+  /* 4. FORCE ACCORDION EXPANSION & REMOVE INTERACTIVE WRAPPER LIMITS */
+  .accordion-content,
+  .panel-hidden,
+  [data-print-expanded="true"],
+  .line-clamp-3,
+  .line-clamp-2,
+  .line-clamp-1 {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    -webkit-line-clamp: unset !important;
+  }
+
+  /* 5. BRANDING RUNNING HEADER ON EVERY PRINTED PAGE */
+  .print-running-header {
+    display: flex !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 24px !important;
+    background: #0f2744 !important;
+    border-bottom: 1.5px solid #f59e0b !important;
+    font-size: 8.5pt !important;
     font-weight: 700 !important;
+    color: #fbbf24 !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 4px 3px 4px !important;
+    z-index: 99999 !important;
+    box-sizing: border-box !important;
   }
 
-  .bg-[#0a192f],
-  .bg-[#112240],
-  .bg-[#1e3a5f] {
-    background-color: #ffffff !important;
-    color: #111827 !important;
+  .print-running-footer {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 20px !important;
+    background: #0f2744 !important;
+    border-top: 1px solid #f59e0b !important;
+    font-size: 7.5pt !important;
+    font-weight: 600 !important;
+    color: #cbd5e1 !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 2px 4px 0 4px !important;
+    z-index: 99999 !important;
+    box-sizing: border-box !important;
   }
 
-  .text-slate-300,
-  .text-slate-400 {
-    color: #334155 !important;
+  /* 6. STRUCTURED PAGE BREAKING PROPERTIES */
+  .print-page-avoid-break,
+  .print-card,
+  article,
+  .article-card,
+  .act-card,
+  .schedule-card,
+  .case-card,
+  .term-card,
+  .question-card,
+  .print-part-group {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 0.75rem !important;
   }
 
-  a {
-    text-decoration: none !important;
-    color: #1d4ed8 !important;
+  .print-page-break-before {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  .print-section-header {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Crisp high-contrast tables and borders in deep navy */
+  table, th, td {
+    border-color: #1e3a5f !important;
+  }
+
+  th {
+    background-color: #0f2744 !important;
+    color: #fbbf24 !important;
+  }
+
+  td {
+    background-color: #11243e !important;
+    color: #ffffff !important;
+  }
+}
+
+/* Screen styles for print-specific elements */
+@media screen {
+  .print-compendium-wrapper,
+  .print-only-compendium,
+  .print-running-header,
+  .print-running-footer {
+    display: none !important;
   }
 }
 

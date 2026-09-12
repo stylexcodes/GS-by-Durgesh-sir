@@ -97,88 +97,86 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
                 </div>
               </div>
 
-              {/* Collapsible Content */}
-              {isExpanded && (
-                <div className="p-5 space-y-4 bg-[#0a192f]/50">
-                  {/* Background Section */}
-                  <div className="bg-[#0a192f] p-3.5 rounded-lg border border-slate-800">
-                    <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                      <AlertCircle className="w-3.5 h-3.5" />
-                      {language === 'hi' ? 'पृष्ठभूमि एवं संदर्भ:' : 'Historical Background:'}
+              {/* Collapsible Content - forced visible in print */}
+              <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block p-5 space-y-4 bg-[#0a192f]/50 print:bg-white`}>
+                {/* Background Section */}
+                <div className="bg-[#0a192f] print:bg-gray-50 p-3.5 rounded-lg border border-slate-800 print:border-gray-300">
+                  <h4 className="text-xs font-bold text-amber-400 print:text-black uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                    <AlertCircle className="w-3.5 h-3.5 no-print" />
+                    {language === 'hi' ? 'पृष्ठभूमि एवं संदर्भ:' : 'Historical Background:'}
+                  </h4>
+                  <p className="text-xs text-slate-200 print:text-black leading-relaxed">
+                    {language === 'hi' ? act.background.hi : act.background.en}
+                  </p>
+                </div>
+
+                {/* Objectives */}
+                {act.objectives && act.objectives.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-bold text-sky-400 print:text-black uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <Target className="w-3.5 h-3.5 no-print" />
+                      {language === 'hi' ? 'प्रमुख उद्देश्य:' : 'Core Objectives:'}
                     </h4>
-                    <p className="text-xs text-slate-200 leading-relaxed">
-                      {language === 'hi' ? act.background.hi : act.background.en}
+                    <ul className="space-y-1.5 pl-2">
+                      {act.objectives.map((obj, idx) => (
+                        <li key={idx} className="text-xs text-slate-300 print:text-gray-800 flex items-start gap-2">
+                          <span className="text-amber-400 print:text-black font-bold">•</span>
+                          <span>{language === 'hi' ? obj.hi : obj.en}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Key Provisions */}
+                <div>
+                  <h4 className="text-xs font-bold text-amber-300 print:text-black uppercase tracking-wider mb-2">
+                    {language === 'hi' ? 'अधिनियम के मुख्य प्रावधान (कानूनी बिंदु):' : 'Key Statutory Provisions:'}
+                  </h4>
+                  <div className="space-y-2">
+                    {act.provisions.map((prov, idx) => (
+                      <div
+                        key={idx}
+                        className="bg-[#11243e] print:bg-gray-50 p-3 rounded-lg border border-slate-800/80 print:border-gray-300 text-xs text-slate-200 print:text-black leading-relaxed"
+                      >
+                        <div className="font-medium text-white print:text-black mb-1">
+                          {idx + 1}. {language === 'hi' ? prov.hi : prov.en}
+                        </div>
+                        <div className="text-[11px] text-slate-400 print:text-gray-700 font-sans pl-3 border-l border-amber-500/30 print:border-black">
+                          {language === 'hi' ? prov.en : prov.hi}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mnemonic Trick if available */}
+                {act.trickMnemonic && (
+                  <div className="bg-gradient-to-r from-amber-500/15 to-amber-600/10 print:bg-gray-100 border border-amber-500/40 print:border-black p-3 rounded-lg">
+                    <div className="flex items-center gap-2 text-xs font-bold text-amber-300 print:text-black mb-1">
+                      <Sparkles className="w-4 h-4 text-amber-400 print:text-black no-print" />
+                      <span>{language === 'hi' ? 'UPSI याद रखने की ट्रिक (Mnemonic):' : 'Exam Memory Mnemonic:'}</span>
+                    </div>
+                    <p className="text-xs text-amber-100 print:text-black font-medium">
+                      {language === 'hi' ? act.trickMnemonic.hi : act.trickMnemonic.en}
                     </p>
                   </div>
+                )}
 
-                  {/* Objectives */}
-                  {act.objectives && act.objectives.length > 0 && (
-                    <div>
-                      <h4 className="text-xs font-bold text-sky-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                        <Target className="w-3.5 h-3.5" />
-                        {language === 'hi' ? 'प्रमुख उद्देश्य:' : 'Core Objectives:'}
-                      </h4>
-                      <ul className="space-y-1.5 pl-2">
-                        {act.objectives.map((obj, idx) => (
-                          <li key={idx} className="text-xs text-slate-300 flex items-start gap-2">
-                            <span className="text-amber-400 font-bold">•</span>
-                            <span>{language === 'hi' ? obj.hi : obj.en}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Key Provisions */}
-                  <div>
-                    <h4 className="text-xs font-bold text-amber-300 uppercase tracking-wider mb-2">
-                      {language === 'hi' ? 'अधिनियम के मुख्य प्रावधान (कानूनी बिंदु):' : 'Key Statutory Provisions:'}
-                    </h4>
-                    <div className="space-y-2">
-                      {act.provisions.map((prov, idx) => (
-                        <div
-                          key={idx}
-                          className="bg-[#11243e] p-3 rounded-lg border border-slate-800/80 text-xs text-slate-200 leading-relaxed"
-                        >
-                          <div className="font-medium text-white mb-1">
-                            {idx + 1}. {language === 'hi' ? prov.hi : prov.en}
-                          </div>
-                          <div className="text-[11px] text-slate-400 font-sans pl-3 border-l border-amber-500/30">
-                            {language === 'hi' ? prov.en : prov.hi}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Mnemonic Trick if available */}
-                  {act.trickMnemonic && (
-                    <div className="bg-gradient-to-r from-amber-500/15 to-amber-600/10 border border-amber-500/40 p-3 rounded-lg">
-                      <div className="flex items-center gap-2 text-xs font-bold text-amber-300 mb-1">
-                        <Sparkles className="w-4 h-4 text-amber-400" />
-                        <span>{language === 'hi' ? 'UPSI याद रखने की ट्रिक (Mnemonic):' : 'Exam Memory Mnemonic:'}</span>
-                      </div>
-                      <p className="text-xs text-amber-100 font-medium">
-                        {language === 'hi' ? act.trickMnemonic.hi : act.trickMnemonic.en}
+                {/* Special Historical Notes */}
+                {act.notes && act.notes.length > 0 && (
+                  <div className="bg-[#132a48] print:bg-gray-50 p-3 rounded-lg border border-slate-700/60 print:border-gray-300 text-xs space-y-1">
+                    <span className="font-bold text-amber-400 print:text-black block">
+                      {language === 'hi' ? 'विशेष टिप्पणी एवं परीक्षा फैक्ट:' : 'Special Exam Notes:'}
+                    </span>
+                    {act.notes.map((note, idx) => (
+                      <p key={idx} className="text-slate-300 print:text-gray-800 leading-relaxed">
+                        {language === 'hi' ? note.hi : note.en}
                       </p>
-                    </div>
-                  )}
-
-                  {/* Special Historical Notes */}
-                  {act.notes && act.notes.length > 0 && (
-                    <div className="bg-[#132a48] p-3 rounded-lg border border-slate-700/60 text-xs space-y-1">
-                      <span className="font-bold text-amber-400 block">
-                        {language === 'hi' ? 'विशेष टिप्पणी एवं परीक्षा फैक्ट:' : 'Special Exam Notes:'}
-                      </span>
-                      {act.notes.map((note, idx) => (
-                        <p key={idx} className="text-slate-300 leading-relaxed">
-                          {language === 'hi' ? note.hi : note.en}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           );
         })}

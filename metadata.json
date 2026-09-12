@@ -1,6 +1,6 @@
 {
-  "name": "UPSI Polity Compendium (भारतीय संविधान एवं राजव्यवस्था)",
-  "description": "Complete Bilingual (Hindi & English) Study Portal and Practice Question Bank for UPSI Indian Constitution & Polity, based on 228 pages of Er. Maroof Sir's curriculum.",
+  "name": "GS By Durgesh Pandey Sir - UPSI Polity Compendium",
+  "description": "Complete Bilingual (Hindi & English) Study Portal, Practice Bank and Standalone Textbook Booklet for UPSI Indian Constitution & Polity by GS By Durgesh Pandey Sir.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

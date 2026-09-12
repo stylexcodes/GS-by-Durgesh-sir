@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'cases', label: { hi: 'ऐतिहासिक वाद', en: 'Landmark Cases' }, icon: ShieldAlert },
     { id: 'terms', label: { hi: 'शब्दावली व 2024 कानून', en: 'Terms & 2024 Law' }, icon: FileText },
     { id: 'quiz', label: { hi: 'UPSI विगत प्रश्न', en: 'Exam Questions' }, icon: CheckCircle2 },
-    { id: 'chapters', label: { hi: 'विषय सूची (228 पृ.)', en: 'Index (228 Pages)' }, icon: BookOpen },
+    { id: 'chapters', label: { hi: 'विषय सूची', en: 'Master Index' }, icon: BookOpen },
   ];
 
   return (
@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
                   </span>
                 </h1>
                 <span className="text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-sans font-semibold border border-amber-500/30 whitespace-nowrap shadow-sm">
-                  UPSI 228 Pages
+                  UPSI Save Edition
                 </span>
               </div>
               <p className="text-xs text-slate-300 font-medium mt-0.5">
