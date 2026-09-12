@@ -100,14 +100,9 @@ export const JudicialCasesView: React.FC<JudicialCasesViewProps> = ({ cases, lan
               <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block p-5 bg-[#f8fafc]/60 print:bg-white space-y-3 text-xs`}>
                 <div className="bg-[#f8fafc] print:bg-gray-50 p-3.5 rounded-lg border border-slate-200 print:border-gray-300 space-y-1">
                   <span className="font-bold text-blue-900 print:text-black block">
-                    {language === 'hi' ? 'अदालत का ऐतिहासिक फैसला एवं सिद्धांत (हिन्दी):' : 'Supreme Court Ruling & Legal Principle:'}
+                    {language === 'hi' ? 'अदालत का ऐतिहासिक फैसला एवं सिद्धांत:' : 'Supreme Court Ruling & Legal Principle:'}
                   </span>
-                  <p className="text-slate-800 print:text-black leading-relaxed">{cs.rulingSummary.hi}</p>
-                </div>
-
-                <div className="bg-[#f8fafc] print:bg-gray-50 p-3 rounded-lg border border-slate-200 print:border-gray-300 space-y-1">
-                  <span className="font-bold text-sky-400 print:text-gray-700 block">English Summary & Context:</span>
-                  <p className="text-slate-600 print:text-gray-800 leading-relaxed font-sans">{cs.rulingSummary.en}</p>
+                  <p className="text-slate-800 print:text-black leading-relaxed">{language === 'hi' ? cs.rulingSummary.hi : cs.rulingSummary.en}</p>
                 </div>
 
                 {/* Constitutional Articles Linked */}

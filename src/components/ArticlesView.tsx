@@ -157,7 +157,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                   {/* Article Title */}
                   <div className="flex items-baseline gap-2 mb-2">
                     <span className="text-sm font-bold text-blue-900 font-cinzel px-2 py-0.5 bg-amber-500/10 rounded border border-amber-500/20 shrink-0">
-                      अनुच्छेद {artNum}
+                      {language === 'hi' ? `अनुच्छेद ${artNum}` : `Article ${artNum}`}
                     </span>
                     <h3 className="text-sm font-semibold text-slate-900 leading-snug">
                       {language === 'hi' ? art.title.hi : art.title.en}
@@ -173,16 +173,9 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                   <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block mt-3 pt-3 border-t border-slate-300/60 print:border-gray-300 space-y-2.5 text-xs`}>
                     <div className="bg-[#f8fafc] print:bg-gray-50 p-3 rounded-lg border border-slate-200 print:border-gray-300">
                       <span className="font-semibold text-blue-900 print:text-black text-[11px] block mb-1">
-                        {language === 'hi' ? 'विस्तृत विवरण (हिन्दी):' : 'Full Hindi Legal Text:'}
+                        {language === 'hi' ? 'विस्तृत विवरण:' : 'Full Legal Text:'}
                       </span>
-                      <p className="text-slate-800 print:text-black leading-relaxed">{desc.hi}</p>
-                    </div>
-
-                    <div className="bg-[#f8fafc] print:bg-gray-50 p-3 rounded-lg border border-slate-200 print:border-gray-300">
-                      <span className="font-semibold text-sky-400 print:text-gray-700 text-[11px] block mb-1">
-                        English Translation & Reference:
-                      </span>
-                      <p className="text-slate-600 print:text-gray-800 leading-relaxed font-sans">{desc.en}</p>
+                      <p className="text-slate-800 print:text-black leading-relaxed">{language === 'hi' ? desc.hi : desc.en}</p>
                     </div>
 
                     {art.clauseDetails && art.clauseDetails.length > 0 && (

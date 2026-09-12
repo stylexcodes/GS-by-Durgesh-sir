@@ -163,7 +163,7 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
                       <div className="flex justify-between items-start gap-2">
                         <div className="font-bold text-sm text-black">
                           <span className="border border-black px-1.5 py-0.5 rounded text-xs bg-gray-50 mr-2 font-mono">
-                            अनुच्छेद {artNum}
+                            Article {artNum}
                           </span>
                           <span>{art.title?.hi || ''}</span>
                           <span className="text-xs font-normal text-gray-700 block sm:inline sm:ml-2">

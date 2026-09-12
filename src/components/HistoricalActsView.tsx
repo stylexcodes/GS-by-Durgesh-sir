@@ -137,13 +137,10 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
                     {act.provisions.map((prov, idx) => (
                       <div
                         key={idx}
-                        className="bg-[#11243e] print:bg-gray-50 p-3 rounded-lg border border-slate-200/80 print:border-gray-300 text-xs text-slate-800 print:text-black leading-relaxed"
+                        className="bg-[#f1f5f9] print:bg-gray-50 p-3 rounded-lg border border-slate-200/80 print:border-gray-300 text-xs text-slate-800 print:text-black leading-relaxed"
                       >
                         <div className="font-medium text-slate-900 print:text-black mb-1">
                           {idx + 1}. {language === 'hi' ? prov.hi : prov.en}
-                        </div>
-                        <div className="text-[11px] text-slate-600 print:text-gray-700 font-sans pl-3 border-l border-slate-300 print:border-black">
-                          {language === 'hi' ? prov.en : prov.hi}
                         </div>
                       </div>
                     ))}

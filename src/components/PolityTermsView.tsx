@@ -74,13 +74,6 @@ export const PolityTermsView: React.FC<PolityTermsViewProps> = ({ terms, languag
                     </strong>
                     <p>{language === 'hi' ? termItem.definition.hi : termItem.definition.en}</p>
                   </div>
-
-                  <div className="bg-[#f8fafc] p-2.5 rounded-lg border border-slate-200 text-[11px] text-slate-600 leading-relaxed font-sans">
-                    <strong className="text-sky-400 block mb-0.5">
-                      {language === 'hi' ? 'अंग्रेजी अनुवाद एवं संदर्भ:' : 'Context & English:'}
-                    </strong>
-                    <p>{language === 'hi' ? termItem.definition.en : termItem.definition.hi}</p>
-                  </div>
                 </div>
               </div>
 
