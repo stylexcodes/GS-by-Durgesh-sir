@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 import { JudicialVerdict, Language } from '../types';
 import { ScrollReveal } from './ScrollReveal';
@@ -290,7 +291,7 @@ export const JudicialCasesView: React.FC<JudicialCasesViewProps> = ({ cases, lan
       )}
 
       {/* CASE DETAIL POP-UP MODAL */}
-      {selectedCaseModal && (
+      {selectedCaseModal && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fadeIn"
           onClick={() => setSelectedCaseModal(null)}
@@ -370,7 +371,7 @@ export const JudicialCasesView: React.FC<JudicialCasesViewProps> = ({ cases, lan
             </div>
           </div>
         </div>
-      )}
+      , document.body)}
     </div>
   );
 };

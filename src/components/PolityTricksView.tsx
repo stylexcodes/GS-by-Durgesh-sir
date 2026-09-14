@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 import { PolityTrick, Language } from '../types';
 import { ScrollReveal } from './ScrollReveal';
@@ -466,7 +467,7 @@ export const PolityTricksView: React.FC<PolityTricksViewProps> = ({
       </div>
 
       {/* TRICK DETAIL MODAL POP-UP */}
-      {selectedTrickModal && (
+      {selectedTrickModal && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fadeIn"
           onClick={() => setSelectedTrickModal(null)}
@@ -564,7 +565,7 @@ export const PolityTricksView: React.FC<PolityTricksViewProps> = ({
             </div>
           </div>
         </div>
-      )}
+      , document.body)}
     </div>
   );
 };

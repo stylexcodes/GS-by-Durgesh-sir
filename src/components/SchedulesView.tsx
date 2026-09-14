@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 import { ScheduleItem, Language } from '../types';
 import { ScrollReveal } from './ScrollReveal';
@@ -316,7 +317,7 @@ export const SchedulesView: React.FC<SchedulesViewProps> = ({ schedules, languag
       )}
 
       {/* SCHEDULE DETAIL POP-UP MODAL */}
-      {selectedScheduleModal && (
+      {selectedScheduleModal && createPortal(
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fadeIn"
           onClick={() => setSelectedScheduleModal(null)}
@@ -414,7 +415,7 @@ export const SchedulesView: React.FC<SchedulesViewProps> = ({ schedules, languag
             </div>
           </div>
         </div>
-      )}
+      , document.body)}
     </div>
   );
 };

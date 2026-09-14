@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 import { MagicNumberPair, Language } from '../types';
 import { ScrollReveal } from './ScrollReveal';
@@ -377,7 +378,7 @@ export const Magic89View: React.FC<Magic89ViewProps> = ({ pairs, language }) => 
       )}
 
       {/* DETAIL POP-UP MODAL */}
-      {selectedPairModal && (
+      {selectedPairModal && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fadeIn"
           onClick={() => setSelectedPairModal(null)}
@@ -454,7 +455,7 @@ export const Magic89View: React.FC<Magic89ViewProps> = ({ pairs, language }) => 
             </div>
           </div>
         </div>
-      )}
+      , document.body)}
     </div>
   );
 };

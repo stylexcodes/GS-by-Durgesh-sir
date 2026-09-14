@@ -32,7 +32,7 @@ The response MUST be written entirely in ${langName}.
 Keep it structured with bullet points if necessary. Do not include markdown headers like # or **, just plain readable text or basic markdown.`;
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3.6-flash',
+        model: 'gemini-2.5-flash',
         contents: prompt,
       });
 

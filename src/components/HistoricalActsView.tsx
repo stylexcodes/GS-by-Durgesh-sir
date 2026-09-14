@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 import { HistoricalAct, Language } from '../types';
 import { ScrollReveal } from './ScrollReveal';
@@ -327,7 +328,7 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
       )}
 
       {/* ACT DETAIL POP-UP MODAL */}
-      {selectedActModal && (
+      {selectedActModal && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fadeIn"
           onClick={() => setSelectedActModal(null)}
@@ -420,7 +421,7 @@ export const HistoricalActsView: React.FC<HistoricalActsViewProps> = ({ acts, la
             </div>
           </div>
         </div>
-      )}
+      , document.body)}
     </div>
   );
 };

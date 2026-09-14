@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ConstitutionalArticle, Language } from '../types';
 import { 
   X, 
@@ -83,7 +84,7 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
     return 'text-sm leading-relaxed sm:text-[15px] sm:leading-[1.75]';
   };
 
-  return (
+  return createPortal(
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
@@ -380,6 +381,7 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

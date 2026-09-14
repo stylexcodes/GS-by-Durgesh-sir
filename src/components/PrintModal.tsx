@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 import { Language } from '../types';
 import { Download, ExternalLink, X, BookOpen, CheckCircle, Sparkles, Layers, ShieldAlert } from 'lucide-react';
@@ -48,7 +49,7 @@ export const PrintModal: React.FC<PrintModalProps> = ({ isOpen, onClose, languag
     { id: 'sec-9', labelHi: '📝 9. 182 विगत प्रश्न बैंक (PYQ)', labelEn: '📝 9. 182 PYQ Bank', pgs: 'P. 129–156', highlight: true },
   ];
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-sm animate-fadeIn">
       <div 
         className="bg-[#0f1b34] border border-amber-500/50 rounded-2xl max-w-xl w-full p-5 sm:p-6 shadow-2xl relative text-white space-y-4 max-h-[92vh] overflow-y-auto"
@@ -180,6 +181,7 @@ export const PrintModal: React.FC<PrintModalProps> = ({ isOpen, onClose, languag
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
