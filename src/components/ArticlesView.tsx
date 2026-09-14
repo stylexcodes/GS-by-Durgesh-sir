@@ -98,11 +98,11 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
   return (
     <div className="space-y-6">
       {/* Control Bar */}
-      <div className="bg-[#ffffff]/90 border border-amber-500/20 rounded-xl p-4 shadow-lg flex flex-col gap-3">
+      <div className="bg-[#111d38]/90 border border-amber-500/25 rounded-xl p-4 shadow-lg flex flex-col gap-3">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Filter className="w-4 h-4 text-blue-900" />
-            <label className="text-xs font-bold text-blue-900 uppercase tracking-wider">
+            <Filter className="w-4 h-4 text-amber-400" />
+            <label className="text-xs font-bold text-amber-400 uppercase tracking-wider">
               {language === 'hi' ? 'संविधान भाग चुनें:' : 'Select Constitution Part:'}
             </label>
             <select
@@ -111,7 +111,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                 setSelectedPart(e.target.value);
                 setCurrentPage(1);
               }}
-              className="text-xs bg-[#f8fafc] border border-slate-300 text-slate-900 rounded-lg px-3 py-1.5 focus:outline-none focus:border-amber-400 max-w-xs truncate"
+              className="text-xs bg-[#0c162c] border border-slate-700 text-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-amber-400 max-w-xs truncate"
             >
               <option value="all">{language === 'hi' ? 'सभी भाग (1-22) - All Parts' : 'All Parts (1-22)'}</option>
               {availableParts.map((p, idx) => (
@@ -123,7 +123,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
           </div>
 
           <div className="flex items-center gap-3">
-            <label className="flex items-center gap-2 cursor-pointer select-none bg-[#133157] px-3 py-1.5 rounded-lg border border-slate-300 hover:border-amber-400/60 transition">
+            <label className="flex items-center gap-2 cursor-pointer select-none bg-[#162747] px-3 py-1.5 rounded-lg border border-amber-500/40 hover:border-amber-400/80 transition">
               <input
                 type="checkbox"
                 checked={onlyImportant}
@@ -131,15 +131,15 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                   setOnlyImportant(e.target.checked);
                   setCurrentPage(1);
                 }}
-                className="rounded border-amber-500 text-blue-900 focus:ring-amber-400 bg-slate-900 w-3.5 h-3.5"
+                className="rounded border-amber-500 text-amber-500 focus:ring-amber-400 bg-slate-900 w-3.5 h-3.5"
               />
-              <span className="text-xs font-semibold text-blue-900 flex items-center gap-1">
-                <Star className="w-3 h-3 text-blue-900 fill-amber-400" />
+              <span className="text-xs font-semibold text-amber-300 flex items-center gap-1">
+                <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
                 {language === 'hi' ? 'केवल महत्वपूर्ण (UPSI स्टार)' : 'Only High-Yield'}
               </span>
             </label>
 
-            <div className="text-xs text-slate-600 whitespace-nowrap">
+            <div className="text-xs text-slate-400 whitespace-nowrap">
               {language === 'hi'
                 ? `कुल ${filteredArticles.length} अनुच्छेद`
                 : `Total ${filteredArticles.length} Articles`}
@@ -150,8 +150,8 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
 
       {/* Articles Grid */}
       {filteredArticles.length === 0 ? (
-        <div className="text-center py-16 bg-[#ffffff]/40 rounded-xl border border-slate-300/50">
-          <p className="text-slate-600 text-sm">
+        <div className="text-center py-16 bg-[#111d38]/40 rounded-xl border border-slate-800">
+          <p className="text-slate-400 text-sm">
             {language === 'hi'
               ? 'कोई अनुच्छेद नहीं मिला। कृपया खोज शब्द बदलकर पुनः प्रयास करें।'
               : 'No articles found matching your query.'}
@@ -171,19 +171,19 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                 id={`article-card-${cardId}`}
                 className={`rounded-xl border transition-all duration-200 flex flex-col justify-between ${
                   art.isImportant
-                    ? 'bg-gradient-to-br from-[#ffffff] to-[#123158] border-amber-500/40 shadow-md shadow-amber-950/20'
-                    : 'bg-[#ffffff]/70 border-slate-200 hover:border-slate-300'
+                    ? 'bg-gradient-to-br from-[#16294d] to-[#0e1933] border-amber-500/50 shadow-md shadow-black/40'
+                    : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
                 }`}
               >
                 <div className="p-4">
                   {/* Part Header & Badges */}
-                  <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-300/50">
-                    <span className="text-[11px] font-semibold text-blue-900 tracking-wide flex items-center gap-1 truncate max-w-[80%]">
+                  <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-800">
+                    <span className="text-[11px] font-semibold text-amber-400 tracking-wide flex items-center gap-1 truncate max-w-[80%]">
                       <Bookmark className="w-3 h-3 shrink-0" />
                       <span className="truncate">{art.part}</span>
                     </span>
                     {art.isImportant && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-900 border border-amber-500/40 shrink-0">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-300 border border-amber-500/40 shrink-0">
                         <Star className="w-2.5 h-2.5 fill-amber-300" />
                         {language === 'hi' ? 'महत्वपूर्ण' : 'High Yield'}
                       </span>
@@ -192,27 +192,27 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
 
                   {/* Article Title */}
                   <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-sm font-bold text-blue-900 font-cinzel px-2 py-0.5 bg-amber-500/10 rounded border border-amber-500/20 shrink-0">
+                    <span className="text-sm font-bold text-amber-400 font-cinzel px-2 py-0.5 bg-amber-500/15 rounded border border-amber-500/30 shrink-0">
                       {language === 'hi' ? `अनुच्छेद ${artNum}` : `Article ${artNum}`}
                     </span>
-                    <h3 className="text-sm font-semibold text-slate-900 leading-snug">
+                    <h3 className="text-sm font-semibold text-slate-100 leading-snug">
                       {language === 'hi' ? art.title.hi : art.title.en}
                     </h3>
                   </div>
 
                   {/* Content Preview */}
-                  <p className="text-xs text-slate-600 leading-relaxed mt-2 line-clamp-3 print:line-clamp-none print:text-black">
+                  <p className="text-xs text-slate-300 leading-relaxed mt-2 line-clamp-3 print:line-clamp-none print:text-black">
                     {language === 'hi' ? desc.hi : desc.en}
                   </p>
 
                   {/* Expanded Full Content - Forced visible in print mode */}
-                  <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block mt-3 pt-3 border-t border-slate-300/60 print:border-gray-300 space-y-2.5 text-xs`}>
+                  <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block mt-3 pt-3 border-t border-slate-800 print:border-gray-300 space-y-2.5 text-xs`}>
                     
                     {/* AI Expert Explanation Section */}
-                    <div className="bg-blue-50/50 print:bg-gray-50 p-4 rounded-lg border border-blue-100 print:border-gray-300 relative overflow-hidden">
+                    <div className="bg-[#0c162c] print:bg-gray-50 p-4 rounded-lg border border-amber-500/30 print:border-gray-300 relative overflow-hidden">
                       <div className="flex items-center gap-2 mb-2">
-                        <Sparkles className="w-4 h-4 text-amber-500" />
-                        <span className="font-bold text-blue-900 print:text-black text-xs uppercase tracking-wider">
+                        <Sparkles className="w-4 h-4 text-amber-400" />
+                        <span className="font-bold text-amber-400 print:text-black text-xs uppercase tracking-wider">
                           {language === 'hi' ? 'विशेषज्ञ व्याख्या एवं नोट्स:' : 'Expert Explanation & Notes:'}
                         </span>
                       </div>
@@ -223,19 +223,19 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                         
                         if (expState?.loading) {
                           return (
-                            <div className="flex items-center gap-2 text-slate-500 py-2">
-                              <Loader2 className="w-4 h-4 animate-spin" />
+                            <div className="flex items-center gap-2 text-slate-400 py-2">
+                              <Loader2 className="w-4 h-4 animate-spin text-amber-400" />
                               <span>{language === 'hi' ? 'विस्तृत व्याख्या तैयार की जा रही है...' : 'Generating detailed explanation...'}</span>
                             </div>
                           );
                         }
                         
                         if (expState?.error) {
-                          return <div className="text-red-500">{expState.error}</div>;
+                          return <div className="text-red-400">{expState.error}</div>;
                         }
                         
                         if (expState?.text) {
-                          return <div className="text-slate-700 print:text-black leading-relaxed space-y-2 whitespace-pre-wrap">{expState.text}</div>;
+                          return <div className="text-slate-200 print:text-black leading-relaxed space-y-2 whitespace-pre-wrap">{expState.text}</div>;
                         }
                         
                         return null;
@@ -244,11 +244,11 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
 
                     {art.clauseDetails && art.clauseDetails.length > 0 && (
                       <div className="mt-2 space-y-1">
-                        <span className="font-semibold text-blue-900 print:text-black text-[11px] block">
+                        <span className="font-semibold text-amber-300 print:text-black text-[11px] block">
                           {language === 'hi' ? 'प्रमुख उप-खंड:' : 'Key Clauses:'}
                         </span>
                         {art.clauseDetails.map((clause, idx) => (
-                          <div key={idx} className="text-[11px] text-slate-600 print:text-black pl-2 border-l-2 border-amber-500/40 print:border-black py-0.5">
+                          <div key={idx} className="text-[11px] text-slate-300 print:text-black pl-2 border-l-2 border-amber-500/40 print:border-black py-0.5">
                             {language === 'hi' ? clause.hi : clause.en}
                           </div>
                         ))}
@@ -258,13 +258,13 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                 </div>
 
                 {/* Footer action toggle */}
-                <div className="px-4 py-2 bg-[#f8fafc]/60 rounded-b-xl border-t border-slate-200 flex items-center justify-between text-xs no-print">
-                  <span className="text-[11px] text-slate-600">
+                <div className="px-4 py-2 bg-[#0e1933] rounded-b-xl border-t border-slate-800 flex items-center justify-between text-xs no-print">
+                  <span className="text-[11px] text-slate-400">
                     {language === 'hi' ? 'मूल पाठ एवं अनुवाद' : 'Full Text & Notes'}
                   </span>
                   <button
                     onClick={() => toggleExpand(cardId, artNum, language === 'hi' ? art.title.hi : art.title.en)}
-                    className="text-blue-900 hover:text-blue-900 flex items-center gap-1 font-medium transition"
+                    className="text-amber-400 hover:text-amber-300 flex items-center gap-1 font-medium transition"
                   >
                     <span>
                       {isExpanded ? (language === 'hi' ? 'संक्षेप में' : 'Collapse') : (language === 'hi' ? 'विस्तार से पढ़ें' : 'Read Full')}
@@ -280,8 +280,8 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-slate-200">
-          <span className="text-xs text-slate-600">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-slate-800">
+          <span className="text-xs text-slate-400">
             {language === 'hi'
               ? `पृष्ठ ${currentPage} का ${totalPages} (कुल ${filteredArticles.length} अनुच्छेद)`
               : `Page ${currentPage} of ${totalPages} (${filteredArticles.length} articles)`}
@@ -290,7 +290,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
             <button
               onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
               disabled={currentPage === 1}
-              className="px-3 py-1.5 text-xs rounded-lg bg-[#133157] text-slate-600 hover:bg-[#1a3d6d] disabled:opacity-40 disabled:pointer-events-none transition"
+              className="px-3 py-1.5 text-xs rounded-lg bg-[#162747] text-slate-300 hover:bg-[#1f3560] border border-slate-700 disabled:opacity-40 disabled:pointer-events-none transition"
             >
               {language === 'hi' ? '← पिछला' : '← Previous'}
             </button>
@@ -303,8 +303,8 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                     onClick={() => setCurrentPage(pageNum)}
                     className={`w-7 h-7 text-xs rounded-md transition ${
                       currentPage === pageNum
-                        ? 'bg-blue-900 text-white font-bold'
-                        : 'bg-[#133157] text-slate-600 hover:bg-[#1a3d6d]'
+                        ? 'bg-amber-500 text-slate-950 font-bold'
+                        : 'bg-[#162747] text-slate-300 hover:bg-[#1f3560] border border-slate-700'
                     }`}
                   >
                     {pageNum}
@@ -316,7 +316,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
             <button
               onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="px-3 py-1.5 text-xs rounded-lg bg-[#133157] text-slate-600 hover:bg-[#1a3d6d] disabled:opacity-40 disabled:pointer-events-none transition"
+              className="px-3 py-1.5 text-xs rounded-lg bg-[#162747] text-slate-300 hover:bg-[#1f3560] border border-slate-700 disabled:opacity-40 disabled:pointer-events-none transition"
             >
               {language === 'hi' ? 'अगला →' : 'Next →'}
             </button>

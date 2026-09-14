@@ -3,7 +3,7 @@
 @layer base {
   body {
     font-family: 'Outfit', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #f8fafc;
+    background-color: #0b1329;
     color: #f1f5f9;
   }
 
@@ -19,11 +19,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f8fafc;
+  background: #0b1329;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #e2e8f0;
+  background: #1e293b;
   border-radius: 4px;
 }
 

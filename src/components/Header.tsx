@@ -33,26 +33,26 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-[#f8fafc]/95 backdrop-blur-md border-b border-amber-500/20 shadow-xl transition-all">
+    <header className="sticky top-0 z-40 bg-[#0b1329]/95 backdrop-blur-md border-b border-amber-500/20 shadow-xl transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
         {/* Top bar: Emblem, Title, Search & Global Action Buttons */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-3 w-full md:w-auto">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 border border-amber-300/40 flex items-center justify-center text-white font-black text-lg shadow-lg shadow-blue-900/20 shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 border border-amber-300/40 flex items-center justify-center text-slate-950 font-black text-lg shadow-lg shadow-black/40 shrink-0">
               🏛️
             </div>
             <div>
               <div className="flex items-center flex-wrap gap-2">
-                <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 font-serif flex items-center gap-1.5">
+                <h1 className="text-xl sm:text-2xl font-black tracking-tight text-white font-serif flex items-center gap-1.5">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 drop-shadow-sm">
                     GS By Durgesh Pandey Sir
                   </span>
                 </h1>
-                <span className="text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-900 font-sans font-semibold border border-slate-300 whitespace-nowrap shadow-sm">
+                <span className="text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 font-sans font-semibold border border-amber-500/40 whitespace-nowrap shadow-sm">
                   UPSI Save Edition
                 </span>
               </div>
-              <p className="text-xs text-slate-600 font-medium mt-0.5">
+              <p className="text-xs text-slate-300 font-medium mt-0.5">
                 {language === 'hi'
                   ? 'भारतीय संविधान एवं राजव्यवस्था संपूर्ण अध्ययन पोर्टल (द्विभाषी संस्करण)'
                   : 'Indian Constitution & Polity Complete Master Compendium (Bilingual)'}
@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Search bar & Action Buttons */}
           <div className="header-controls-row flex flex-wrap sm:flex-nowrap items-center gap-2.5 w-full md:w-auto">
             <div className="search-input-wrapper relative flex-1 min-w-[180px] w-full md:w-64">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-600 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
               <input
                 id="search-input"
                 type="text"
@@ -74,12 +74,12 @@ export const Header: React.FC<HeaderProps> = ({
                     ? 'अनुच्छेद, कानून, वाद या शब्द खोजें...'
                     : 'Search article, act, case, or keyword...'
                 }
-                className="w-full pl-9 pr-3 py-1.5 text-sm rounded-lg bg-[#ffffff] border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition"
+                className="w-full pl-9 pr-3 py-1.5 text-sm rounded-lg bg-[#16223f] border border-slate-700 text-slate-100 placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-600 hover:text-slate-900"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
                 >
                   ✕
                 </button>
@@ -94,11 +94,11 @@ export const Header: React.FC<HeaderProps> = ({
                 href="https://www.youtube.com/c/1dayers"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="youtube-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 border border-red-200 text-red-700 hover:text-red-800 text-xs font-semibold tracking-wide transition shadow-sm group"
+                className="youtube-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-red-950/40 hover:bg-red-900/50 border border-red-800/60 text-red-300 hover:text-red-200 text-xs font-semibold tracking-wide transition shadow-sm group"
                 title="YouTube: @1dayers"
                 aria-label="YouTube Channel"
               >
-                <Youtube className="w-3.5 h-3.5 text-red-700 group-hover:scale-110 transition-transform shrink-0" />
+                <Youtube className="w-3.5 h-3.5 text-red-400 group-hover:scale-110 transition-transform shrink-0" />
                 <span className="hidden sm:inline whitespace-nowrap">YouTube</span>
               </a>
 
@@ -108,11 +108,11 @@ export const Header: React.FC<HeaderProps> = ({
                 href="https://www.instagram.com/upsc_therapy/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="instagram-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-700 hover:text-pink-800 text-xs font-semibold tracking-wide transition shadow-sm group"
+                className="instagram-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-pink-950/40 hover:bg-pink-900/50 border border-pink-800/60 text-pink-300 hover:text-pink-200 text-xs font-semibold tracking-wide transition shadow-sm group"
                 title="Instagram: @upsc_therapy"
                 aria-label="Instagram Account"
               >
-                <Instagram className="w-3.5 h-3.5 text-pink-700 group-hover:scale-110 transition-transform shrink-0" />
+                <Instagram className="w-3.5 h-3.5 text-pink-400 group-hover:scale-110 transition-transform shrink-0" />
                 <span className="hidden sm:inline whitespace-nowrap">Instagram</span>
               </a>
 
@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="lang-toggle-header"
                 onClick={() => setLanguage(language === 'hi' ? 'en' : 'hi')}
-                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-blue-50 border border-amber-500/40 text-blue-900 text-xs font-semibold tracking-wide transition shadow-sm"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#16223f] hover:bg-[#1f2f55] border border-amber-500/40 text-amber-300 text-xs font-semibold tracking-wide transition shadow-sm"
                 title="Switch Language / भाषा बदलें"
               >
                 <Globe className="w-3.5 h-3.5 shrink-0" />
@@ -131,10 +131,10 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="print-action-btn"
                 onClick={onPrint}
-                className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-lg bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold transition shadow-md hover:shadow-blue-900/20 active:scale-95"
+                className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-bold transition shadow-md shadow-amber-500/20 active:scale-95"
                 title="Save as PDF / प्रिंट करें"
               >
-                <Printer className="w-3.5 h-3.5 text-white shrink-0" />
+                <Printer className="w-3.5 h-3.5 text-slate-950 shrink-0" />
                 <span className="whitespace-nowrap">
                   {language === 'hi' ? '💾 सेव PDF' : '💾 SAVE AS PDF'}
                 </span>
@@ -156,11 +156,11 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md whitespace-nowrap transition-all ${
                     isActive
-                      ? 'bg-blue-900 text-white font-bold shadow-md shadow-blue-900/20'
-                      : 'bg-[#ffffff]/70 text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-300/50'
+                      ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold shadow-md shadow-amber-500/20'
+                      : 'bg-[#16223f]/80 text-slate-300 hover:text-white hover:bg-[#1f2f55] border border-slate-700/60'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-blue-900'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-slate-950' : 'text-amber-400'}`} />
                   <span>{language === 'hi' ? tab.label.hi : tab.label.en}</span>
                 </button>
               );
@@ -168,12 +168,12 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Mobile & Small Screen Quick Social Connect */}
-          <div className="flex sm:hidden items-center gap-1.5 shrink-0 pl-2 border-l border-slate-300/60">
+          <div className="flex sm:hidden items-center gap-1.5 shrink-0 pl-2 border-l border-slate-700/60">
             <a
               href="https://www.youtube.com/c/1dayers"
               target="_blank"
               rel="noopener noreferrer"
-              className="youtube-btn flex items-center justify-center w-7 h-7 rounded-md bg-red-600/20 border border-red-200 text-red-700 hover:text-red-800"
+              className="youtube-btn flex items-center justify-center w-7 h-7 rounded-md bg-red-950/40 border border-red-800/60 text-red-400 hover:text-red-300"
               title="YouTube (@1dayers)"
               aria-label="YouTube Channel"
             >
@@ -183,7 +183,7 @@ export const Header: React.FC<HeaderProps> = ({
               href="https://www.instagram.com/upsc_therapy/"
               target="_blank"
               rel="noopener noreferrer"
-              className="instagram-btn flex items-center justify-center w-7 h-7 rounded-md bg-pink-600/20 border border-pink-200 text-pink-700 hover:text-pink-800"
+              className="instagram-btn flex items-center justify-center w-7 h-7 rounded-md bg-pink-950/40 border border-pink-800/60 text-pink-400 hover:text-pink-300"
               title="Instagram (@upsc_therapy)"
               aria-label="Instagram Account"
             >
