@@ -406,8 +406,29 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                     </div>
                   )}
 
+                  {/* Card Toolbar (Moved above expanded content) */}
+                  <div className={`px-4 py-2.5 bg-[#091224] flex items-center justify-between text-xs no-print mt-3 -mx-4 ${!isExpanded ? '-mb-4 rounded-b-2xl' : 'border-b border-slate-800/80'}`}>
+                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                      onClick={() => setSelectedArticleForModal(art)}
+                      className="text-amber-400 hover:text-amber-300 flex items-center gap-1.5 font-bold transition"
+                    >
+                      <Maximize2 className="w-3.5 h-3.5" />
+                      <span>{language === 'hi' ? 'विस्तृत पॉप-अप (Pop-up)' : 'Detailed Pop-up'}</span>
+                    </motion.button>
+
+                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                      onClick={() => toggleExpand(cardId, artNum, language === 'hi' ? art.title.hi : art.title.en)}
+                      className="text-slate-300 hover:text-white flex items-center gap-1 font-medium transition"
+                    >
+                      <span>
+                        {isExpanded ? (language === 'hi' ? 'संक्षेप में' : 'Collapse') : (language === 'hi' ? 'व्याख्या पढ़ें' : 'Read Notes')}
+                      </span>
+                      {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                    </motion.button>
+                  </div>
+
                   {/* Expanded Full Content */}
-                  <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block mt-3 pt-3 border-t border-slate-800 print:border-gray-300 space-y-2.5 text-xs`}>
+                  <div className={`accordion-content ${isExpanded ? 'block' : 'hidden'} print:!block mt-4 space-y-2.5 text-xs`}>
                     {/* Full Opposite Language for Complete Bilingual Study */}
                     <div className="bg-[#091224] p-3 rounded-xl border border-slate-800 text-xs">
                       <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">
@@ -452,27 +473,6 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                       })()}
                     </div>
                   </div>
-                </div>
-
-                {/* Card Bottom Toolbar */}
-                <div className="px-4 py-2.5 bg-[#091224] rounded-b-2xl border-t border-slate-800/80 flex items-center justify-between text-xs no-print">
-                  <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                    onClick={() => setSelectedArticleForModal(art)}
-                    className="text-amber-400 hover:text-amber-300 flex items-center gap-1.5 font-bold transition"
-                  >
-                    <Maximize2 className="w-3.5 h-3.5" />
-                    <span>{language === 'hi' ? 'विस्तृत पॉप-अप (Pop-up)' : 'Detailed Pop-up'}</span>
-                  </motion.button>
-
-                  <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                    onClick={() => toggleExpand(cardId, artNum, language === 'hi' ? art.title.hi : art.title.en)}
-                    className="text-slate-300 hover:text-white flex items-center gap-1 font-medium transition"
-                  >
-                    <span>
-                      {isExpanded ? (language === 'hi' ? 'संक्षेप में' : 'Collapse') : (language === 'hi' ? 'व्याख्या पढ़ें' : 'Read Notes')}
-                    </span>
-                    {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                  </motion.button>
                 </div>
               </div>
             </ScrollReveal>
