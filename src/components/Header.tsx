@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../types';
-import { BookOpen, Search, Printer, Globe, Sparkles, Scale, ShieldAlert, FileText, CheckCircle2, Youtube, Instagram } from 'lucide-react';
+import { BookOpen, Search, Printer, Globe, Sparkles, Scale, ShieldAlert, FileText, CheckCircle2, Youtube, Instagram, Lightbulb } from 'lucide-react';
 
 interface HeaderProps {
   language: Language;
@@ -23,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const tabs = [
     { id: 'articles', label: { hi: 'अनुच्छेद 1-395', en: 'Articles 1-395' }, icon: BookOpen },
+    { id: 'tricks', label: { hi: 'स्मार्ट ट्रिक्स (18+)', en: 'Polity Tricks (18+)' }, icon: Lightbulb },
     { id: 'historical', label: { hi: 'ऐतिहासिक अधिनियम', en: 'Historical Acts' }, icon: Scale },
     { id: 'schedules', label: { hi: '12 अनुसूचियां', en: '12 Schedules' }, icon: FileText },
     { id: 'magic89', label: { hi: 'जादुई 89 ट्रिक', en: 'Magic 89 Rule' }, icon: Sparkles },

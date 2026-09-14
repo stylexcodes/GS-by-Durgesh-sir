@@ -405,5 +405,21 @@ export const CHAPTERS_INDEX: ChapterMeta[] = [
       hi: 'यूपीएसआई, यूपी पुलिस, सीपीओ एसआई एवं दिल्ली पुलिस के 182 विगत वर्षों के हल प्रश्न एवं मैजिक नंबर 89 ट्रिक',
       en: '182 Previous Year Solved Exam Questions with answer keys & the famous Magic Number 89 Center-State mapping tool'
     }
+  },
+  {
+    id: 'polity-tricks',
+    number: 28,
+    title: {
+      hi: 'संविधान स्मरण सूत्र एवं स्मार्ट ट्रिक्स (18+ Formulas)',
+      en: 'Polity Memory Tricks & Mnemonics Bank'
+    },
+    pageRange: '229 - 238',
+    iconName: 'Lightbulb',
+    category: 'special',
+    description: {
+      hi: 'विदेशी स्रोत (अकबर आज फिर), 3SDR प्रस्तावना, BIHAR-T, वर्ष 2000 राज्य, पकानि कोका दुयो दशम, उसरा निकास शनि, समस्त शोध संस्कृति, HCL, रकानि कायोश',
+      en: '18 Proven constitutional mnemonics: Foreign sources, 3SDR, BIHAR-T, 2000 states, President 52-61, VP 63-70, Rights, HCL, and Governor'
+    }
   }
 ];
+

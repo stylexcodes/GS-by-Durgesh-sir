@@ -97,12 +97,12 @@
     display: none !important;
   }
 
-  /* Force the browser to render the deep navy backgrounds and gold colors */
+  /* Force the browser to render the deep navy dark backgrounds and gold colors */
   body, html, .master-container {
-    background-color: #f8fafc !important;
+    background-color: #060c18 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    color: #ffffff !important;
+    color: #f8fafc !important;
   }
 
   /* 2. STRIP WEB UI SHELL ELEMENTS */
@@ -143,8 +143,8 @@
     position: static !important;
     padding-top: 12px !important;
     padding-bottom: 12px !important;
-    background-color: #f8fafc !important;
-    color: #ffffff !important;
+    background-color: #060c18 !important;
+    color: #f8fafc !important;
   }
 
   /* 4. FORCE ACCORDION EXPANSION & REMOVE INTERACTIVE WRAPPER LIMITS */
@@ -170,42 +170,28 @@
     left: 0 !important;
     right: 0 !important;
     height: 24px !important;
-    background: #ffffff !important;
+    background: #0d1b32 !important;
     border-bottom: 1.5px solid #f59e0b !important;
     font-size: 8.5pt !important;
     font-weight: 700 !important;
     color: #fbbf24 !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0 4px 3px 4px !important;
+    padding: 0 8px 3px 8px !important;
     z-index: 99999 !important;
     box-sizing: border-box !important;
   }
 
-  /* WATERMARK ON EVERY PAGE - GS By Durgesh Pandey Sir */
+  /* WATERMARK HIDDEN IN PRINT - Avoids Chromium Skia GPU compositor out-of-memory crash */
   .print-watermark {
-    display: flex !important;
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) rotate(-32deg) !important;
-    font-size: 46pt !important;
-    font-family: 'Cinzel', serif !important;
-    font-weight: 900 !important;
-    color: rgba(251, 191, 36, 0.075) !important;
-    text-shadow: 0 0 1px rgba(255, 255, 255, 0.05) !important;
-    text-align: center !important;
-    white-space: nowrap !important;
-    pointer-events: none !important;
-    z-index: 99999 !important;
-    width: 100vw !important;
-    align-items: center !important;
-    justify-content: center !important;
-    letter-spacing: 5px !important;
-    text-transform: uppercase !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    user-select: none !important;
+    display: none !important;
+  }
+
+  /* Eliminate all box-shadows, text-shadows, and filters across print pages */
+  *, *::before, *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
   }
 
   .print-running-footer {
@@ -215,14 +201,14 @@
     left: 0 !important;
     right: 0 !important;
     height: 20px !important;
-    background: #ffffff !important;
+    background: #0d1b32 !important;
     border-top: 1px solid #f59e0b !important;
     font-size: 7.5pt !important;
     font-weight: 600 !important;
     color: #cbd5e1 !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 2px 4px 0 4px !important;
+    padding: 2px 8px 0 8px !important;
     z-index: 99999 !important;
     box-sizing: border-box !important;
   }
@@ -255,17 +241,17 @@
 
   /* Crisp high-contrast tables and borders in deep navy */
   table, th, td {
-    border-color: #e2e8f0 !important;
+    border-color: #1a3458 !important;
   }
 
   th {
-    background-color: #ffffff !important;
+    background-color: #12233d !important;
     color: #fbbf24 !important;
   }
 
   td {
-    background-color: #11243e !important;
-    color: #ffffff !important;
+    background-color: #0d1b32 !important;
+    color: #f8fafc !important;
   }
 }
 

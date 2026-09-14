@@ -97,3 +97,37 @@ export interface MagicNumberPair {
   stateArticle: number;
   stateSubject: BilingualText;
 }
+
+export interface TrickBreakdownItem {
+  letter: string;
+  word: string;
+  meaning: string;
+  detail?: string;
+}
+
+export interface SpecificProvisionItem {
+  entity: string;
+  hindiTrick: string;
+  englishTrick: string;
+  provision: BilingualText;
+  breakdown?: string[];
+}
+
+export interface PolityTrick {
+  id: string;
+  sectionNumber: number;
+  title: BilingualText;
+  category: 'sources' | 'preamble' | 'names' | 'states' | 'citizenship' | 'rights' | 'president' | 'vice_president' | 'prime_minister' | 'judiciary' | 'governor';
+  hindiTrick: string;
+  englishTrick: string;
+  targetTopic: BilingualText;
+  breakdownHindi: TrickBreakdownItem[];
+  breakdownEnglish: TrickBreakdownItem[];
+  specificProvisions?: SpecificProvisionItem[];
+  explanation?: BilingualText;
+  examTip?: BilingualText;
+  relatedArticles?: string[];
+  tags: string[];
+}
+
+

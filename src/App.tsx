@@ -8,9 +8,11 @@ import { MAGIC_89_PAIRS } from './data/magic89Data';
 import { JUDICIAL_CASES_DATA } from './data/judicialCasesData';
 import { POLITY_TERMS_DATA } from './data/polityTermsData';
 import { QUESTIONS_BANK } from './data/questionsBank';
+import { POLITY_TRICKS_DATA } from './data/tricksData';
 
 import { Header } from './components/Header';
 import { ArticlesView } from './components/ArticlesView';
+import { PolityTricksView } from './components/PolityTricksView';
 import { HistoricalActsView } from './components/HistoricalActsView';
 import { SchedulesView } from './components/SchedulesView';
 import { Magic89View } from './components/Magic89View';
@@ -48,6 +50,8 @@ export function App() {
       setActiveTab('terms');
     } else if (chapterId === 'magic-89-rule') {
       setActiveTab('magic89');
+    } else if (chapterId === 'polity-tricks' || chapterId === 'tricks') {
+      setActiveTab('tricks');
     } else if (chapterId === 'question-bank' || chapterId === 'practice-questions') {
       setActiveTab('quiz');
     } else {
@@ -79,7 +83,7 @@ export function App() {
         {/* Main Container */}
         <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5 sm:py-6 pb-28 sm:pb-12 space-y-6">
           {/* Quick Highlights & Metrics Strip */}
-          <div className="metric-cards-strip grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 no-print">
+          <div className="metric-cards-strip grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 no-print">
             <div
               onClick={() => setActiveTab('articles')}
               className={`p-3 rounded-xl border cursor-pointer transition text-center ${
@@ -91,6 +95,20 @@ export function App() {
               <div className="text-amber-400 text-lg font-bold font-cinzel">395</div>
               <div className="text-[11px] text-slate-300">
                 {language === 'hi' ? 'अनुच्छेद (1-395)' : 'Articles (1-395)'}
+              </div>
+            </div>
+
+            <div
+              onClick={() => setActiveTab('tricks')}
+              className={`p-3 rounded-xl border cursor-pointer transition text-center ${
+                activeTab === 'tricks'
+                  ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
+                  : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
+              }`}
+            >
+              <div className="text-amber-400 text-lg font-bold font-cinzel">18</div>
+              <div className="text-[11px] text-slate-300">
+                {language === 'hi' ? 'स्मार्ट ट्रिक्स (18)' : 'Polity Tricks (18)'}
               </div>
             </div>
 
@@ -168,6 +186,10 @@ export function App() {
           {/* Tab Views */}
           {activeTab === 'articles' && (
             <ArticlesView articles={ARTICLES_DATA} language={language} searchQuery={searchQuery} />
+          )}
+
+          {activeTab === 'tricks' && (
+            <PolityTricksView tricks={POLITY_TRICKS_DATA} language={language} searchQuery={searchQuery} />
           )}
 
           {activeTab === 'historical' && (
