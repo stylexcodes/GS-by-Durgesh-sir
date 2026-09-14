@@ -145,7 +145,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Tab Navigation Menu & Mobile Quick Links */}
-        <nav className="mt-3 flex items-center justify-between gap-2 overflow-x-auto pb-1.5 scrollbar-thin">
+        <nav className="mt-3 flex items-center justify-between gap-2 overflow-x-auto pb-1.5 subtable-scrollbar">
           <div className="flex space-x-1.5 shrink-0">
             {tabs.map((tab) => {
               const Icon = tab.icon;

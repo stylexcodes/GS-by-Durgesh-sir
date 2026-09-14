@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Language } from '../types';
 import { Download, ExternalLink, X, BookOpen, CheckCircle, Sparkles, Layers, ShieldAlert } from 'lucide-react';
 
@@ -55,13 +56,13 @@ export const PrintModal: React.FC<PrintModalProps> = ({ isOpen, onClose, languag
         aria-modal="true"
       >
         {/* Close Button */}
-        <button
+        <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
           onClick={onClose}
           className="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-full hover:bg-slate-800 transition"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
-        </button>
+        </motion.button>
 
         {/* Title Header */}
         <div className="flex items-start gap-3.5 border-b border-slate-800 pb-3">
@@ -101,7 +102,7 @@ export const PrintModal: React.FC<PrintModalProps> = ({ isOpen, onClose, languag
           </div>
 
           <div className="flex flex-col sm:flex-row gap-2">
-            <button
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               onClick={() => handleOpenBooklet()}
               className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer"
             >
@@ -109,9 +110,9 @@ export const PrintModal: React.FC<PrintModalProps> = ({ isOpen, onClose, languag
               <span>
                 {language === 'hi' ? '📖 संपूर्ण बुकलेट खोलें (Print Full Book)' : '📖 Open Complete Booklet'}
               </span>
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               onClick={handleDownloadDirect}
               className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#162544] hover:bg-[#1c3058] border border-slate-700 text-amber-300 font-semibold text-xs sm:text-sm transition cursor-pointer"
               title="Save standalone offline HTML file"
@@ -120,7 +121,7 @@ export const PrintModal: React.FC<PrintModalProps> = ({ isOpen, onClose, languag
               <span>
                 {language === 'hi' ? '💾 ऑफलाइन फाइल (.html)' : '💾 Offline (.html)'}
               </span>
-            </button>
+            </motion.button>
           </div>
         </div>
 
@@ -138,7 +139,7 @@ export const PrintModal: React.FC<PrintModalProps> = ({ isOpen, onClose, languag
 
           <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
             {sections.map((sec) => (
-              <button
+              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 key={sec.id}
                 onClick={() => handleOpenBooklet(sec.id)}
                 className={`flex items-center justify-between p-2 sm:p-2.5 rounded-lg border text-left transition text-xs cursor-pointer ${
@@ -153,7 +154,7 @@ export const PrintModal: React.FC<PrintModalProps> = ({ isOpen, onClose, languag
                 <span className="text-[10px] text-slate-400 shrink-0 ml-1.5 font-mono">
                   {sec.pgs}
                 </span>
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
@@ -168,6 +169,14 @@ export const PrintModal: React.FC<PrintModalProps> = ({ isOpen, onClose, languag
           </div>
           <div className="text-slate-400 leading-relaxed">
             • 395+ अनुच्छेद (भाग 1-22) • 18 ऐतिहासिक अधिनियम (1773-1947) • 12 अनुसूचियां • 30 मैजिक 89/90 जोड़े • 18+ स्मार्ट ट्रिक्स • 45 लैंडमार्क वाद • 22 शब्दावली व 182 विगत प्रश्न बैंक।
+          </div>
+          <div className="text-amber-400/90 font-medium pt-1 border-t border-slate-800/80 flex items-center gap-1.5">
+            <span>🛡️</span>
+            <span>
+              {language === 'hi'
+                ? 'ऑफिशियल वॉटरमार्क "GS By Durgesh Pandey Sir" वेबसाइट व सभी PDF पृष्ठों पर सुरक्षित है।'
+                : 'Official watermark "GS By Durgesh Pandey Sir" is permanently embedded on all PDF pages.'}
+            </span>
           </div>
         </div>
       </div>

@@ -39,7 +39,10 @@ export const FullNotesPrintCompendium: React.FC<FullNotesPrintCompendiumProps> =
     <div id="full-notes-print-compendium" className="print-only-compendium master-container bg-[#060c18] text-[#f8fafc] font-sans leading-relaxed">
       {/* WATERMARK ON EVERY PAGE - GS By Durgesh Pandey Sir */}
       <div className="print-watermark" aria-hidden="true">
-        <span>GS By Durgesh Pandey Sir</span>
+        <div className="print-watermark-content">
+          <div className="print-watermark-title">GS By Durgesh Pandey Sir</div>
+          <div className="print-watermark-sub">Indian Polity & Constitution Master Compendium</div>
+        </div>
       </div>
 
       {/* Running Header for every printed page */}

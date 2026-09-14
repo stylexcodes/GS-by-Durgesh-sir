@@ -18,33 +18,57 @@
       print-color-adjust: exact !important;
     }
 
-    /* WATERMARK ON SCREEN ONLY - Hidden in print to prevent Chromium GPU compositor crashes */
+    /* PROFESSIONAL SCREEN & PRINT WATERMARK: GS BY DURGESH PANDEY SIR */
     .print-watermark {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-30deg);
-      font-size: 44pt;
-      font-family: 'Cinzel', serif;
-      font-weight: 900;
-      color: rgba(251, 191, 36, 0.04);
-      text-shadow: 0 0 1px rgba(255, 255, 255, 0.02);
-      text-align: center;
-      white-space: nowrap;
-      pointer-events: none;
-      z-index: 99999;
+      top: 0;
+      left: 0;
       width: 100vw;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      pointer-events: none;
+      z-index: 99999;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .print-watermark-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-30deg);
+      opacity: 0.07;
+      text-align: center;
+    }
+
+    .print-watermark-title {
+      font-family: 'Cinzel', serif;
+      font-size: 38pt;
+      font-weight: 900;
+      color: #f59e0b;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1.15;
+    }
+
+    .print-watermark-sub {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13pt;
+      font-weight: 700;
+      color: #cbd5e1;
       letter-spacing: 5px;
       text-transform: uppercase;
-      user-select: none;
+      margin-top: 6px;
+      white-space: nowrap;
     }
 
     body {
       background-color: #060c18;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='550' height='380' viewBox='0 0 550 380'><text x='50%' y='50%' fill='rgba(251,191,36,0.025)' font-family='Cinzel, serif' font-size='22' font-weight='800' transform='rotate(-28 275 190)' text-anchor='middle'>GS By Durgesh Pandey Sir</text></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='260' viewBox='0 0 440 260'><text x='50%' y='50%' fill='rgba(251,191,36,0.055)' font-family='Cinzel, serif' font-size='18' font-weight='800' letter-spacing='2' transform='rotate(-28 220 130)' text-anchor='middle'>GS By Durgesh Pandey Sir</text></svg>");
       background-repeat: repeat;
       background-attachment: fixed;
       color: #f8fafc;
@@ -576,8 +600,8 @@
         print-color-adjust: exact !important;
       }
 
-      /* CRITICAL: Hide GPU-heavy transforms & UI elements in print to prevent Chromium/Windows spooler crash */
-      .utility-toolbar, .no-print, .action-buttons, .section-tabs-bar, .section-status-banner, .print-watermark {
+      /* CRITICAL: Hide UI buttons and toolbar in print */
+      .utility-toolbar, .no-print, .action-buttons, .section-tabs-bar, .section-status-banner {
         display: none !important;
       }
 
@@ -588,14 +612,65 @@
         filter: none !important;
       }
 
-      /* Clean, lightweight print background */
+      /* PROFESSIONAL PRINT & PDF WATERMARK: "GS By Durgesh Pandey Sir" */
+      .print-watermark {
+        display: flex !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        align-items: center !important;
+        justify-content: center !important;
+        pointer-events: none !important;
+        z-index: 100 !important;
+        overflow: hidden !important;
+      }
+
+      .print-watermark-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transform: rotate(-30deg) !important;
+        opacity: 0.085 !important;
+        user-select: none !important;
+        text-align: center !important;
+      }
+
+      .print-watermark-title {
+        font-family: 'Cinzel', serif !important;
+        font-size: 38pt !important;
+        font-weight: 900 !important;
+        color: #f59e0b !important;
+        letter-spacing: 4px !important;
+        text-transform: uppercase !important;
+        white-space: nowrap !important;
+        line-height: 1.15 !important;
+      }
+
+      .print-watermark-sub {
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 13pt !important;
+        font-weight: 700 !important;
+        color: #cbd5e1 !important;
+        letter-spacing: 5px !important;
+        text-transform: uppercase !important;
+        margin-top: 6px !important;
+        white-space: nowrap !important;
+      }
+
+      /* Clean, lightweight print background with repeating vector watermark tile */
       body {
         background-color: #060c18 !important;
-        background-image: none !important;
-        background-attachment: scroll !important;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='260' viewBox='0 0 440 260'><text x='50%' y='50%' fill='rgba(251,191,36,0.065)' font-family='Cinzel, serif' font-size='18' font-weight='800' letter-spacing='2' transform='rotate(-28 220 130)' text-anchor='middle'>GS By Durgesh Pandey Sir</text></svg>") !important;
+        background-repeat: repeat !important;
+        background-attachment: fixed !important;
         padding: 0 !important;
         margin: 0 !important;
         color: #f8fafc !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
 
       @page {
@@ -623,9 +698,12 @@
 </head>
 <body>
 
-<!-- WATERMARK ON SCREEN ONLY - Hidden in print to prevent print spooler crash -->
+<!-- OFFICIAL MASTER WATERMARK: "GS By Durgesh Pandey Sir" (Repeats across PDF & Screen) -->
 <div class="print-watermark" aria-hidden="true">
-  <span>GS By Durgesh Pandey Sir</span>
+  <div class="print-watermark-content">
+    <div class="print-watermark-title">GS By Durgesh Pandey Sir</div>
+    <div class="print-watermark-sub">Indian Polity & Constitution Master Compendium</div>
+  </div>
 </div>
 
 <div class="master-container booklet-container">

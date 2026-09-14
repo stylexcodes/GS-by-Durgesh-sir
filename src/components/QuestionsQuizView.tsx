@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { MCQQuestion, Language } from '../types';
+import { ScrollReveal } from './ScrollReveal';
 import { CheckCircle2, XCircle, Award, RotateCcw, HelpCircle, Sparkles } from 'lucide-react';
 
 interface QuestionsQuizViewProps {
@@ -36,6 +38,7 @@ export const QuestionsQuizView: React.FC<QuestionsQuizViewProps> = ({ questions,
   return (
     <div className="space-y-6">
       {/* Header Banner & Scorecard */}
+      <ScrollReveal direction="down" delay={0.1}>
       <div className="bg-gradient-to-r from-[#111d38] to-[#162747] border border-amber-500/25 rounded-xl p-5 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
           <h2 className="text-lg font-bold text-white font-cinzel flex items-center gap-2">
@@ -68,15 +71,16 @@ export const QuestionsQuizView: React.FC<QuestionsQuizViewProps> = ({ questions,
             </span>
             <span className="text-base font-bold text-emerald-400">{correctCount}</span>
           </div>
-          <button
+          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             onClick={handleReset}
             className="p-2 text-slate-400 hover:text-amber-400 rounded-md hover:bg-[#162747] transition"
             title={language === 'hi' ? 'पुनः प्रारंभ करें' : 'Reset All'}
           >
             <RotateCcw className="w-4 h-4" />
-          </button>
+          </motion.button>
         </div>
       </div>
+      </ScrollReveal>
 
       {/* Questions List */}
       <div className="space-y-4">
@@ -87,8 +91,8 @@ export const QuestionsQuizView: React.FC<QuestionsQuizViewProps> = ({ questions,
           const optionsList: Array<'a' | 'b' | 'c' | 'd'> = ['a', 'b', 'c', 'd'];
 
           return (
+            <ScrollReveal key={q.id} delay={0.05 * (qIndex % 10)} direction="up">
             <div
-              key={q.id}
               id={`quiz-item-${q.id}`}
               className="bg-[#111d38]/90 border border-amber-500/25 rounded-xl p-5 shadow-lg space-y-4"
             >
@@ -135,7 +139,7 @@ export const QuestionsQuizView: React.FC<QuestionsQuizViewProps> = ({ questions,
                   }
 
                   return (
-                    <button
+                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                       key={optKey}
                       onClick={() => handleSelect(q.id, optKey)}
                       disabled={isAnswered}
@@ -154,7 +158,7 @@ export const QuestionsQuizView: React.FC<QuestionsQuizViewProps> = ({ questions,
                       {isAnswered && isThisSelected && !isThisCorrect && (
                         <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
                       )}
-                    </button>
+                    </motion.button>
                   );
                 })}
               </div>
@@ -186,6 +190,7 @@ export const QuestionsQuizView: React.FC<QuestionsQuizViewProps> = ({ questions,
                 </div>
               )}
             </div>
+            </ScrollReveal>
           );
         })}
       </div>

@@ -21,8 +21,11 @@ import { PolityTermsView } from './components/PolityTermsView';
 import { QuestionsQuizView } from './components/QuestionsQuizView';
 import { ChaptersIndexView } from './components/ChaptersIndexView';
 import { PrintModal } from './components/PrintModal';
+import { WatermarkOverlay } from './components/WatermarkOverlay';
+import { ScrollReveal } from './components/ScrollReveal';
+import { motion } from 'motion/react';
 
-import { Printer, Globe, ArrowUp, Youtube, Instagram, Scale, Landmark } from 'lucide-react';
+import { Printer, Globe, ArrowUp, Youtube, Instagram } from 'lucide-react';
 
 export function App() {
   const [language, setLanguage] = useState<Language>('hi');
@@ -62,11 +65,8 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#0b1329] text-slate-100 flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950 relative overflow-x-hidden">
-      {/* Background Polity & Judiciary Watermark */}
-      <div className="fixed inset-0 pointer-events-none flex flex-col items-center justify-center z-0 opacity-[0.035] text-amber-400 overflow-hidden space-y-24">
-        <Scale strokeWidth={0.5} className="w-[120vw] h-[120vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px]" />
-        <Landmark strokeWidth={0.5} className="w-[120vw] h-[120vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px]" />
-      </div>
+      {/* Master Watermark: "GS By Durgesh Pandey Sir" on Website and PDF */}
+      <WatermarkOverlay />
 
       <div className="relative z-10 flex flex-col flex-1 w-full">
         {/* Header with Search & Global Actions */}
@@ -83,178 +83,202 @@ export function App() {
         {/* Main Container */}
         <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5 sm:py-6 pb-28 sm:pb-12 space-y-6">
           {/* Quick Highlights & Metrics Strip */}
-          <div className="metric-cards-strip grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 no-print">
-            <div
-              onClick={() => setActiveTab('articles')}
-              className={`p-3 rounded-xl border cursor-pointer transition text-center ${
-                activeTab === 'articles'
-                  ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
-                  : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">395</div>
-              <div className="text-[11px] text-slate-300">
-                {language === 'hi' ? 'अनुच्छेद (1-395)' : 'Articles (1-395)'}
-              </div>
-            </div>
+          <ScrollReveal direction="down" delay={0.1}>
+            <div className="metric-cards-strip grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 no-print">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveTab('articles')}
+                className={`p-3 rounded-xl border cursor-pointer transition text-center ${
+                  activeTab === 'articles'
+                    ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
+                    : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="text-amber-400 text-lg font-bold font-cinzel">395</div>
+                <div className="text-[11px] text-slate-300">
+                  {language === 'hi' ? 'अनुच्छेद (1-395)' : 'Articles (1-395)'}
+                </div>
+              </motion.div>
 
-            <div
-              onClick={() => setActiveTab('tricks')}
-              className={`p-3 rounded-xl border cursor-pointer transition text-center ${
-                activeTab === 'tricks'
-                  ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
-                  : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">18</div>
-              <div className="text-[11px] text-slate-300">
-                {language === 'hi' ? 'स्मार्ट ट्रिक्स (18)' : 'Polity Tricks (18)'}
-              </div>
-            </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveTab('tricks')}
+                className={`p-3 rounded-xl border cursor-pointer transition text-center ${
+                  activeTab === 'tricks'
+                    ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
+                    : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="text-amber-400 text-lg font-bold font-cinzel">18</div>
+                <div className="text-[11px] text-slate-300">
+                  {language === 'hi' ? 'स्मार्ट ट्रिक्स (18)' : 'Polity Tricks (18)'}
+                </div>
+              </motion.div>
 
-            <div
-              onClick={() => setActiveTab('historical')}
-              className={`p-3 rounded-xl border cursor-pointer transition text-center ${
-                activeTab === 'historical'
-                  ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
-                  : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">15</div>
-              <div className="text-[11px] text-slate-300">
-                {language === 'hi' ? 'अधिनियम (1773-1947)' : 'Historical Acts'}
-              </div>
-            </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveTab('historical')}
+                className={`p-3 rounded-xl border cursor-pointer transition text-center ${
+                  activeTab === 'historical'
+                    ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
+                    : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="text-amber-400 text-lg font-bold font-cinzel">15</div>
+                <div className="text-[11px] text-slate-300">
+                  {language === 'hi' ? 'अधिनियम (1773-1947)' : 'Historical Acts'}
+                </div>
+              </motion.div>
 
-            <div
-              onClick={() => setActiveTab('schedules')}
-              className={`p-3 rounded-xl border cursor-pointer transition text-center ${
-                activeTab === 'schedules'
-                  ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
-                  : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">12</div>
-              <div className="text-[11px] text-slate-300">
-                {language === 'hi' ? 'अनुसूचियां (1-12)' : '12 Schedules'}
-              </div>
-            </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveTab('schedules')}
+                className={`p-3 rounded-xl border cursor-pointer transition text-center ${
+                  activeTab === 'schedules'
+                    ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
+                    : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="text-amber-400 text-lg font-bold font-cinzel">12</div>
+                <div className="text-[11px] text-slate-300">
+                  {language === 'hi' ? 'अनुसूचियां (1-12)' : '12 Schedules'}
+                </div>
+              </motion.div>
 
-            <div
-              onClick={() => setActiveTab('magic89')}
-              className={`p-3 rounded-xl border cursor-pointer transition text-center ${
-                activeTab === 'magic89'
-                  ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
-                  : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">89</div>
-              <div className="text-[11px] text-slate-300">
-                {language === 'hi' ? 'जादुई ट्रिक (30 जोड़े)' : 'Magic 89 Pairs'}
-              </div>
-            </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveTab('magic89')}
+                className={`p-3 rounded-xl border cursor-pointer transition text-center ${
+                  activeTab === 'magic89'
+                    ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
+                    : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="text-amber-400 text-lg font-bold font-cinzel">89</div>
+                <div className="text-[11px] text-slate-300">
+                  {language === 'hi' ? 'जादुई ट्रिक (30 जोड़े)' : 'Magic 89 Pairs'}
+                </div>
+              </motion.div>
 
-            <div
-              onClick={() => setActiveTab('cases')}
-              className={`p-3 rounded-xl border cursor-pointer transition text-center ${
-                activeTab === 'cases'
-                  ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
-                  : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">15+</div>
-              <div className="text-[11px] text-slate-300">
-                {language === 'hi' ? 'सुप्रीम कोर्ट वाद' : 'Landmark Verdicts'}
-              </div>
-            </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveTab('cases')}
+                className={`p-3 rounded-xl border cursor-pointer transition text-center ${
+                  activeTab === 'cases'
+                    ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
+                    : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="text-amber-400 text-lg font-bold font-cinzel">15+</div>
+                <div className="text-[11px] text-slate-300">
+                  {language === 'hi' ? 'सुप्रीम कोर्ट वाद' : 'Landmark Verdicts'}
+                </div>
+              </motion.div>
 
-            <div
-              onClick={() => setActiveTab('chapters')}
-              className={`p-3 rounded-xl border cursor-pointer transition text-center ${
-                activeTab === 'chapters'
-                  ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
-                  : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="text-amber-400 text-lg font-bold font-cinzel">23</div>
-              <div className="text-[11px] text-slate-300">
-                {language === 'hi' ? 'विषय सूची' : 'Master Index'}
-              </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveTab('chapters')}
+                className={`p-3 rounded-xl border cursor-pointer transition text-center ${
+                  activeTab === 'chapters'
+                    ? 'bg-[#182749] border-amber-400 shadow-lg shadow-amber-950/40'
+                    : 'bg-[#111d38]/90 border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="text-amber-400 text-lg font-bold font-cinzel">23</div>
+                <div className="text-[11px] text-slate-300">
+                  {language === 'hi' ? 'विषय सूची' : 'Master Index'}
+                </div>
+              </motion.div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Tab Views */}
-          {activeTab === 'articles' && (
-            <ArticlesView articles={ARTICLES_DATA} language={language} searchQuery={searchQuery} />
-          )}
+          <ScrollReveal blur={false}>
+            {activeTab === 'articles' && (
+              <ArticlesView articles={ARTICLES_DATA} language={language} searchQuery={searchQuery} />
+            )}
 
-          {activeTab === 'tricks' && (
-            <PolityTricksView tricks={POLITY_TRICKS_DATA} language={language} searchQuery={searchQuery} />
-          )}
+            {activeTab === 'tricks' && (
+              <PolityTricksView tricks={POLITY_TRICKS_DATA} language={language} searchQuery={searchQuery} />
+            )}
 
-          {activeTab === 'historical' && (
-            <HistoricalActsView acts={HISTORICAL_ACTS_DATA} language={language} searchQuery={searchQuery} />
-          )}
+            {activeTab === 'historical' && (
+              <HistoricalActsView acts={HISTORICAL_ACTS_DATA} language={language} searchQuery={searchQuery} />
+            )}
 
-          {activeTab === 'schedules' && (
-            <SchedulesView schedules={SCHEDULES_DATA} language={language} />
-          )}
+            {activeTab === 'schedules' && (
+              <SchedulesView schedules={SCHEDULES_DATA} language={language} />
+            )}
 
-          {activeTab === 'magic89' && (
-            <Magic89View pairs={MAGIC_89_PAIRS} language={language} />
-          )}
+            {activeTab === 'magic89' && (
+              <Magic89View pairs={MAGIC_89_PAIRS} language={language} />
+            )}
 
-          {activeTab === 'cases' && (
-            <JudicialCasesView cases={JUDICIAL_CASES_DATA} language={language} searchQuery={searchQuery} />
-          )}
+            {activeTab === 'cases' && (
+              <JudicialCasesView cases={JUDICIAL_CASES_DATA} language={language} searchQuery={searchQuery} />
+            )}
 
-          {activeTab === 'terms' && (
-            <PolityTermsView terms={POLITY_TERMS_DATA} language={language} searchQuery={searchQuery} />
-          )}
+            {activeTab === 'terms' && (
+              <PolityTermsView terms={POLITY_TERMS_DATA} language={language} searchQuery={searchQuery} />
+            )}
 
-          {activeTab === 'quiz' && (
-            <QuestionsQuizView questions={QUESTIONS_BANK} language={language} />
-          )}
+            {activeTab === 'quiz' && (
+              <QuestionsQuizView questions={QUESTIONS_BANK} language={language} />
+            )}
 
-          {activeTab === 'chapters' && (
-            <ChaptersIndexView
-              chapters={CHAPTERS_INDEX}
-              language={language}
-              onSelectChapter={handleSelectChapterFromIndex}
-            />
-          )}
+            {activeTab === 'chapters' && (
+              <ChaptersIndexView
+                chapters={CHAPTERS_INDEX}
+                language={language}
+                onSelectChapter={handleSelectChapterFromIndex}
+              />
+            )}
+          </ScrollReveal>
         </main>
 
         {/* Floating Action Buttons: Bilingual Toggle, Save PDF, Scroll to Top */}
         <div id="floating-actions-container" className="floating-actions fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 flex flex-col items-end gap-2 sm:gap-2.5 no-print">
           {/* Floating Language Switcher */}
-          <button
+          <motion.button
             id="floating-lang-toggle"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setLanguage(language === 'hi' ? 'en' : 'hi')}
-            className="floating-btn flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#16223f]/95 hover:bg-[#1d2d52] border border-amber-500/30 text-amber-300 text-[11px] sm:text-xs font-bold shadow-2xl hover:scale-105 active:scale-95 transition backdrop-blur-md"
+            className="floating-btn flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#16223f]/95 hover:bg-[#1d2d52] border border-amber-500/30 text-amber-300 text-[11px] sm:text-xs font-bold shadow-2xl transition backdrop-blur-md"
           >
             <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 animate-spin-slow shrink-0" />
             <span className="whitespace-nowrap">{language === 'hi' ? 'Switch to English' : 'हिन्दी में पढ़ें'}</span>
-          </button>
+          </motion.button>
 
           {/* Floating Save PDF Action Button */}
-          <button
+          <motion.button
             id="floating-print-btn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleOpenPrintBooklet}
-            className="floating-btn flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-[11px] sm:text-xs font-black shadow-2xl hover:scale-105 active:scale-95 transition"
+            className="floating-btn flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-[11px] sm:text-xs font-black shadow-2xl transition"
           >
             <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-950 shrink-0" />
             <span className="whitespace-nowrap">{language === 'hi' ? '💾 सेव बुकलेट / PDF' : '💾 Save Booklet / PDF'}</span>
-          </button>
+          </motion.button>
 
           {/* Back to top */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#16223f]/90 hover:bg-[#1d2d52] border border-slate-700 text-slate-300 hover:text-amber-400 flex items-center justify-center shadow-lg transition"
             title="Scroll to top"
           >
             <ArrowUp className="w-4 h-4" />
-          </button>
+          </motion.button>
         </div>
 
         {/* Screen Footer */}

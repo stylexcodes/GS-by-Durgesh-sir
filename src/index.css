@@ -3,8 +3,11 @@
 @layer base {
   body {
     font-family: 'Outfit', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #0b1329;
+    background-color: #080e1e;
     color: #f1f5f9;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, .font-serif-heading {
@@ -12,23 +15,140 @@
   }
 }
 
-/* Custom Scrollbar */
+/* Reader Readability Scaling Classes */
+.font-scale-sm {
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+.font-scale-md {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.font-scale-lg {
+  font-size: 1.125rem;
+  line-height: 1.85;
+}
+
+/* Enhanced Hindi & English Reading Typography */
+.reading-content-hindi {
+  font-family: 'Noto Sans Devanagari', 'Outfit', sans-serif;
+  line-height: 1.8;
+  letter-spacing: 0.012em;
+}
+
+.reading-content-english {
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* Custom Webkit Scrollbars for Desktop & Modals */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b1329;
+  background: #080e1e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #1e3a5f;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #d97706;
+}
+
+/* Slim Sub-table Scrollbar */
+.subtable-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.subtable-scrollbar::-webkit-scrollbar-track {
+  background: #060c18;
+  border-radius: 3px;
+}
+.subtable-scrollbar::-webkit-scrollbar-thumb {
+  background: #234575;
+  border-radius: 3px;
+}
+.subtable-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Sleek animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalPopUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes subTableSlide {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    max-height: 2000px;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-modalPopUp {
+  animation: modalPopUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-subTableSlide {
+  animation: subTableSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glassmorphic interactive cards */
+.glass-panel {
+  background: rgba(13, 23, 46, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(251, 191, 36, 0.15);
+}
+
+.glass-panel-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6), 0 0 15px -3px rgba(245, 158, 11, 0.15);
+  transform: translateY(-1px);
 }
 
 /* Dynamic print preparation helper classes */
@@ -97,9 +217,12 @@
     display: none !important;
   }
 
-  /* Force the browser to render the deep navy dark backgrounds and gold colors */
+  /* Force the browser to render the deep navy dark backgrounds, gold colors, and repeating watermark */
   body, html, .master-container {
     background-color: #060c18 !important;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='260' viewBox='0 0 440 260'><text x='50%' y='50%' fill='rgba(251,191,36,0.065)' font-family='Cinzel, serif' font-size='18' font-weight='800' letter-spacing='2' transform='rotate(-28 220 130)' text-anchor='middle'>GS By Durgesh Pandey Sir</text></svg>") !important;
+    background-repeat: repeat !important;
+    background-attachment: fixed !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     color: #f8fafc !important;
@@ -182,9 +305,54 @@
     box-sizing: border-box !important;
   }
 
-  /* WATERMARK HIDDEN IN PRINT - Avoids Chromium Skia GPU compositor out-of-memory crash */
+  /* 5b. VECTOR PRINT & PDF WATERMARK: "GS By Durgesh Pandey Sir" */
   .print-watermark {
-    display: none !important;
+    display: flex !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    z-index: 1000 !important;
+    overflow: hidden !important;
+  }
+
+  .print-watermark-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transform: rotate(-30deg) !important;
+    opacity: 0.085 !important;
+    user-select: none !important;
+    text-align: center !important;
+  }
+
+  .print-watermark-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: 38pt !important;
+    font-weight: 900 !important;
+    color: #f59e0b !important;
+    letter-spacing: 4px !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    line-height: 1.15 !important;
+  }
+
+  .print-watermark-sub {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 13pt !important;
+    font-weight: 700 !important;
+    color: #cbd5e1 !important;
+    letter-spacing: 5px !important;
+    text-transform: uppercase !important;
+    margin-top: 6px !important;
+    white-space: nowrap !important;
   }
 
   /* Eliminate all box-shadows, text-shadows, and filters across print pages */
