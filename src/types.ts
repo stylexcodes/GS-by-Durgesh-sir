@@ -32,6 +32,7 @@ export interface ConstitutionalArticle {
   clauseDetails?: BilingualText[];
   amendmentNote?: BilingualText;
   keyPoints?: BilingualText[];
+  expertNotes?: BilingualText;
   isImportant?: boolean;
 }
 
