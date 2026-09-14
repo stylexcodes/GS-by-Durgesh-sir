@@ -7,7 +7,7 @@ import {
   ChevronUp, 
   Bookmark, 
   Filter, 
-  Loader2, 
+   
   Sparkles, 
   Maximize2, 
   Copy, 
@@ -29,7 +29,6 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
   const [selectedPart, setSelectedPart] = useState<string>('all');
   const [onlyImportant, setOnlyImportant] = useState<boolean>(false);
   const [expandedArticles, setExpandedArticles] = useState<Record<string, boolean>>({});
-  const [explanations, setExplanations] = useState<Record<string, { loading: boolean; text?: string; error?: string }>>({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedArticleForModal, setSelectedArticleForModal] = useState<ConstitutionalArticle | null>(null);
   const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
@@ -82,35 +81,10 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
   }, [filteredArticles, currentPage]);
 
   const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
-
-  const fetchExplanation = async (articleId: string, articleNumber: string, articleTitle: string) => {
-    const key = `${articleId}-${language}`;
-    if (explanations[key]?.text || explanations[key]?.loading) return;
-
-    setExplanations(prev => ({ ...prev, [key]: { loading: true } }));
-    try {
-      const response = await fetch('/api/explain', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ articleNumber, articleTitle, language })
-      });
-      const data = await response.json();
-      if (data.explanation) {
-        setExplanations(prev => ({ ...prev, [key]: { loading: false, text: data.explanation } }));
-      } else {
-        setExplanations(prev => ({ ...prev, [key]: { loading: false, error: 'Failed to generate explanation.' } }));
-      }
-    } catch (error) {
-      setExplanations(prev => ({ ...prev, [key]: { loading: false, error: 'An error occurred while fetching the explanation.' } }));
-    }
-  };
-
   const toggleExpand = (id: string, artNum: string, artTitle: string) => {
     setExpandedArticles((prev) => {
       const isNowExpanded = !prev[id];
-      if (isNowExpanded) {
-        fetchExplanation(id, artNum, artTitle);
-      }
+      
       return { ...prev, [id]: isNowExpanded };
     });
   };
@@ -437,40 +411,6 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, language, 
                       <p className="text-slate-200 leading-relaxed">
                         {language === 'hi' ? desc.en : desc.hi}
                       </p>
-                    </div>
-
-                    {/* AI Expert Explanation Section */}
-                    <div className="bg-[#081224] print:bg-gray-50 p-4 rounded-xl border border-amber-500/30 print:border-gray-300 relative overflow-hidden">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Sparkles className="w-4 h-4 text-amber-400" />
-                        <span className="font-bold text-amber-400 print:text-black text-xs uppercase tracking-wider">
-                          {language === 'hi' ? 'विशेषज्ञ व्याख्या एवं परीक्षा नोट्स:' : 'Expert Explanation & Notes:'}
-                        </span>
-                      </div>
-                      
-                      {(() => {
-                        const expKey = `${cardId}-${language}`;
-                        const expState = explanations[expKey];
-                        
-                        if (expState?.loading) {
-                          return (
-                            <div className="flex items-center gap-2 text-slate-400 py-2">
-                              <Loader2 className="w-4 h-4 animate-spin text-amber-400" />
-                              <span>{language === 'hi' ? 'विस्तृत व्याख्या तैयार की जा रही है...' : 'Generating detailed explanation...'}</span>
-                            </div>
-                          );
-                        }
-                        
-                        if (expState?.error) {
-                          return <div className="text-red-400">{expState.error}</div>;
-                        }
-                        
-                        if (expState?.text) {
-                          return <div className="text-slate-200 print:text-black leading-relaxed space-y-2 whitespace-pre-wrap">{expState.text}</div>;
-                        }
-                        
-                        return null;
-                      })()}
                     </div>
                   </div>
                 </div>
